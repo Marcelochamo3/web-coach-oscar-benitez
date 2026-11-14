@@ -274,7 +274,7 @@ function initCalendar() {
             const waText = encodeURIComponent(
                 `Hola Oscar, reservé una sesión desde tu web:\n• Nombre: ${name}\n• Teléfono: ${phone}\n• Fecha: ${selectedDateStr}\n• Horario: ${selectedTimeStr} hs\n• Modalidad: ${modality}`
             );
-            document.getElementById('booking-whatsapp-link').href = `https://wa.me/5491100000000?text=${waText}`;
+            document.getElementById('booking-whatsapp-link').href = `https://wa.me/5493624237272?text=${waText}`;
 
             document.getElementById('booking-form-wrapper').classList.add('hidden');
             document.getElementById('booking-success').classList.remove('hidden');
@@ -346,98 +346,32 @@ window.resetBooking = function() {
 };
 
 /* --------------------------------------------------------------------------
-   7. SISTEMA DE MENSAJES INTERNOS (LOCALSTORAGE + BUZÓN)
+   7. MENSAJE PRIVADO DIRECTO A OSCAR (WHATSAPP)
    -------------------------------------------------------------------------- */
-const STORAGE_KEY = 'oscar_coach_internal_messages';
-
-function getMessages() {
-    try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    } catch {
-        return [];
-    }
-}
-
-function saveMessages(msgs) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(msgs));
-    updateInboxCount();
-}
-
-function updateInboxCount() {
-    const countEl = document.getElementById('inbox-count');
-    if (countEl) {
-        countEl.textContent = getMessages().length;
-    }
-}
-
 function initInternalMessages() {
     const form = document.getElementById('internal-message-form');
-    const inboxPanel = document.getElementById('inbox-panel');
-    const toggleBtn = document.getElementById('toggle-inbox-btn');
-    const backBtn = document.getElementById('back-to-form-btn');
     const feedback = document.getElementById('msg-feedback');
-
-    updateInboxCount();
 
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const newMsg = {
-                id: Date.now(),
-                name: document.getElementById('msg-name').value.trim(),
-                contact: document.getElementById('msg-contact').value.trim(),
-                topic: document.getElementById('msg-topic').value,
-                body: document.getElementById('msg-body').value.trim(),
-                date: new Date().toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' })
-            };
+            const name = document.getElementById('msg-name').value.trim();
+            const contact = document.getElementById('msg-contact').value.trim();
+            const topic = document.getElementById('msg-topic').value;
+            const body = document.getElementById('msg-body').value.trim();
 
-            const messages = getMessages();
-            messages.unshift(newMsg);
-            saveMessages(messages);
+            const waText = encodeURIComponent(
+                `Hola Oscar, te envío un mensaje privado desde tu web:\n• Nombre: ${name}\n• Contacto: ${contact}\n• Motivo: ${topic}\n• Mensaje: ${body}`
+            );
+            const waUrl = `https://wa.me/5493624237272?text=${waText}`;
+
+            window.open(waUrl, '_blank', 'noopener');
 
             form.reset();
-            feedback.textContent = '✓ ¡Mensaje interno enviado! Oscar lo recibió en su buzón y te responderá a la brevedad.';
+            feedback.innerHTML = `✓ Mensaje preparado para Oscar. Si no se abrió WhatsApp automáticamente, <a href="${waUrl}" target="_blank" rel="noopener" class="underline font-bold">haz clic aquí para enviarlo</a>.`;
             feedback.classList.remove('hidden');
-            setTimeout(() => feedback.classList.add('hidden'), 5000);
         });
     }
-
-    if (toggleBtn && inboxPanel && form) {
-        toggleBtn.addEventListener('click', () => {
-            form.classList.add('hidden');
-            inboxPanel.classList.remove('hidden');
-            renderInboxList();
-        });
-    }
-
-    if (backBtn && inboxPanel && form) {
-        backBtn.addEventListener('click', () => {
-            inboxPanel.classList.add('hidden');
-            form.classList.remove('hidden');
-        });
-    }
-}
-
-function renderInboxList() {
-    const list = document.getElementById('inbox-list');
-    if (!list) return;
-
-    const messages = getMessages();
-    if (messages.length === 0) {
-        list.innerHTML = `<p class="text-sm text-forest-900/60 text-center py-8">No hay mensajes internos registrados todavía.</p>`;
-        return;
-    }
-
-    list.innerHTML = messages.map(m => `
-        <div class="p-4 rounded-2xl bg-forest-50 border border-forest-100 space-y-1.5">
-            <div class="flex items-center justify-between gap-2">
-                <span class="font-bold text-sm text-forest-900">${escapeHtml(m.name)}</span>
-                <span class="text-[11px] font-medium text-forest-600">${m.date}</span>
-            </div>
-            <p class="text-xs font-semibold text-forest-700">${escapeHtml(m.topic)} • ${escapeHtml(m.contact)}</p>
-            <p class="text-sm text-forest-900/80 pt-1">${escapeHtml(m.body)}</p>
-        </div>
-    `).join('');
 }
 
 window.preselectMessage = function(text) {
