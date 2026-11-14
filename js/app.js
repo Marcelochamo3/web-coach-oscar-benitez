@@ -170,6 +170,14 @@ function showQuizResult() {
     titleEl.textContent = data.title;
     descEl.textContent = data.desc;
 
+    const bookBtn = document.getElementById('quiz-book-btn');
+    if (bookBtn) {
+        bookBtn.onclick = (e) => {
+            e.preventDefault();
+            openInquiryModal(data.title, 'Sesión recomendada según tu autodiagnóstico');
+        };
+    }
+
     quizContainer.classList.add('hidden');
     resultDiv.classList.remove('hidden');
 
@@ -432,24 +440,34 @@ window.closeCourseModal = function() {
 
 window.openBuyCourseModal = function(title, price) {
     const modal = document.getElementById('buy-course-modal');
+    const wrapper = document.getElementById('buy-course-form-wrapper');
+    const success = document.getElementById('buy-course-success');
+    const form = document.getElementById('buy-course-form');
+
     document.getElementById('buy-course-title').textContent = title;
     document.getElementById('buy-course-price').textContent = price;
+    wrapper.classList.remove('hidden');
+    success.classList.add('hidden');
+    form.reset();
     modal.classList.remove('hidden');
     if (window.lucide) lucide.createIcons();
 
-    const form = document.getElementById('buy-course-form');
     form.onsubmit = (e) => {
         e.preventDefault();
         const name = document.getElementById('buy-name').value.trim();
         const email = document.getElementById('buy-email').value.trim();
         const phone = document.getElementById('buy-phone').value.trim();
 
+        document.getElementById('buy-course-summary').textContent = `${name}, pre-reservamos tu compra de "${title}" (${price}). Incluye Videos + PDF y 1 Sesión 1 a 1 GRATIS.`;
+
         const waText = encodeURIComponent(
-            `Hola Oscar, quiero comprar el curso online:\n• Curso: ${title} (${price})\n• Incluye: Videos + PDF + 1 Sesión 1 a 1 GRATIS\n• Nombre: ${name}\n• Email para recibir acceso: ${email}\n• WhatsApp: ${phone}`
+            `Hola Oscar, pre-reservé la compra de un curso online:\n• Curso: ${title} (${price})\n• Incluye: Videos + PDF + 1 Sesión 1 a 1 GRATIS\n• Nombre: ${name}\n• Email para recibir acceso: ${email}\n• WhatsApp: ${phone}`
         );
-        window.open(`https://wa.me/5493624237272?text=${waText}`, '_blank', 'noopener');
-        form.reset();
-        closeBuyCourseModal();
+        document.getElementById('buy-course-wa-link').href = `https://wa.me/5493624237272?text=${waText}`;
+
+        wrapper.classList.add('hidden');
+        success.classList.remove('hidden');
+        if (window.lucide) lucide.createIcons();
     };
 };
 
@@ -459,20 +477,72 @@ window.closeBuyCourseModal = function() {
 
 window.openEventModal = function(eventTitle) {
     const modal = document.getElementById('event-modal');
+    const form = document.getElementById('event-register-form');
+    const success = document.getElementById('event-success');
+
     document.getElementById('event-modal-title').textContent = eventTitle;
+    form.classList.remove('hidden');
+    success.classList.add('hidden');
+    form.reset();
     modal.classList.remove('hidden');
 
-    const form = document.getElementById('event-register-form');
     form.onsubmit = (e) => {
         e.preventDefault();
         const name = document.getElementById('ev-name').value.trim();
-        alert(`¡Gracias ${name}! Tu lugar para "${eventTitle}" ha sido pre-reservado. Te enviaremos el enlace de acceso por correo y WhatsApp.`);
-        form.reset();
-        closeEventModal();
+        const email = document.getElementById('ev-email').value.trim();
+        const phone = document.getElementById('ev-phone').value.trim();
+
+        document.getElementById('event-summary').textContent = `${name}, tu lugar para "${eventTitle}" fue pre-reservado. Envía tu confirmación por WhatsApp para recibir el acceso.`;
+
+        const waText = encodeURIComponent(
+            `Hola Oscar, pre-reservé mi lugar en un evento:\n• Evento: ${eventTitle}\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp: ${phone}`
+        );
+        document.getElementById('event-wa-link').href = `https://wa.me/5493624237272?text=${waText}`;
+
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+        if (window.lucide) lucide.createIcons();
     };
 };
 
 window.closeEventModal = function() {
     document.getElementById('event-modal').classList.add('hidden');
+};
+
+window.openInquiryModal = function(serviceName, serviceDesc) {
+    const modal = document.getElementById('service-inquiry-modal');
+    const form = document.getElementById('service-inquiry-form');
+    const success = document.getElementById('inq-success');
+
+    document.getElementById('inq-service-name').textContent = serviceName;
+    document.getElementById('inq-service-desc').textContent = serviceDesc;
+    form.classList.remove('hidden');
+    success.classList.add('hidden');
+    form.reset();
+    modal.classList.remove('hidden');
+    if (window.lucide) lucide.createIcons();
+
+    form.onsubmit = (e) => {
+        e.preventDefault();
+        const name = document.getElementById('inq-name').value.trim();
+        const phone = document.getElementById('inq-phone').value.trim();
+        const email = document.getElementById('inq-email').value.trim();
+        const notes = document.getElementById('inq-notes').value.trim();
+
+        document.getElementById('inq-summary').textContent = `${name}, tu solicitud para "${serviceName}" fue pre-reservada. Envía la confirmación por WhatsApp para coordinar con Oscar.`;
+
+        const waText = encodeURIComponent(
+            `Hola Oscar, te envío una solicitud pre-reservada desde tu web:\n• Servicio / Motivo: ${serviceName}\n• Nombre: ${name}\n• WhatsApp: ${phone}\n• Email: ${email}${notes ? `\n• Detalles: ${notes}` : ''}`
+        );
+        document.getElementById('inq-wa-link').href = `https://wa.me/5493624237272?text=${waText}`;
+
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+        if (window.lucide) lucide.createIcons();
+    };
+};
+
+window.closeInquiryModal = function() {
+    document.getElementById('service-inquiry-modal').classList.add('hidden');
 };
 

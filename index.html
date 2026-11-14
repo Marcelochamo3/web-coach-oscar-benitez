@@ -325,9 +325,9 @@
                             <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-600 shrink-0"></i> Plan de acción entre sesiones</li>
                         </ul>
                     </div>
-                    <a href="#calendario" class="w-full text-center bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl transition-colors">
+                    <button type="button" onclick="openInquiryModal('Coaching 1 a 1 (Personal)', 'Sesiones individuales de 60 minutos (Online o Presencial)')" class="w-full text-center bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl transition-colors">
                         Reservar Sesión
-                    </a>
+                    </button>
                 </div>
 
                 <!-- Servicio 2 (Destacado) -->
@@ -344,9 +344,9 @@
                             <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-300 shrink-0"></i> Seguimiento semanal directo</li>
                         </ul>
                     </div>
-                    <a href="#calendario" class="w-full text-center bg-white hover:bg-forest-50 text-forest-900 font-semibold py-3.5 rounded-xl transition-colors">
+                    <button type="button" onclick="openInquiryModal('Coaching Ejecutivo', 'Liderazgo consciente, comunicación asertiva y seguimiento')" class="w-full text-center bg-white hover:bg-forest-50 text-forest-900 font-semibold py-3.5 rounded-xl transition-colors">
                         Solicitar Entrevista
-                    </a>
+                    </button>
                 </div>
 
                 <!-- Servicio 3 -->
@@ -363,9 +363,9 @@
                             <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-600 shrink-0"></i> Propuesta adaptada a tu empresa</li>
                         </ul>
                     </div>
-                    <a href="#contacto" class="w-full text-center bg-forest-50 hover:bg-forest-100 text-forest-800 border border-forest-200 font-semibold py-3.5 rounded-xl transition-colors">
+                    <button type="button" onclick="openInquiryModal('Cotización para Empresa y Equipos', 'Talleres in-company y facilitación para organizaciones')" class="w-full text-center bg-forest-50 hover:bg-forest-100 text-forest-800 border border-forest-200 font-semibold py-3.5 rounded-xl transition-colors">
                         Cotizar para mi Equipo
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -393,7 +393,7 @@
                     <div class="h-44 bg-gradient-to-br from-forest-700 to-forest-900 p-6 flex flex-col justify-between text-white">
                         <div class="flex items-center justify-between gap-2">
                             <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-semibold">4 Módulos • Videos + PDF</span>
-                            <span class="font-bold text-base bg-white text-forest-900 px-3 py-0.5 rounded-full">USD 49</span>
+                            <span class="font-bold text-sm bg-white text-forest-900 px-3 py-0.5 rounded-full">$35.000</span>
                         </div>
                         <h3 class="text-xl font-bold leading-snug">El Arte de las Conversaciones Difíciles</h3>
                     </div>
@@ -412,10 +412,10 @@
                             </div>
                         </div>
                         <div class="flex gap-2.5 pt-1">
-                            <button onclick="openCourseModal('El Arte de las Conversaciones Difíciles', ['Módulo 1: Anatomía de una conversación postergada', 'Módulo 2: Hechos vs. Juicios e interpretaciones', 'Módulo 3: Cómo hacer pedidos y reclamos efectivos', 'Módulo 4: Regulación emocional en el diálogo', 'Material PDF descargable + 1 Sesión 1 a 1 GRATIS'], 'USD 49')" class="flex-1 py-3 rounded-xl border border-forest-200 text-forest-800 text-sm font-semibold hover:bg-forest-50 transition-colors">
+                            <button onclick="openCourseModal('El Arte de las Conversaciones Difíciles', ['Módulo 1: Anatomía de una conversación postergada', 'Módulo 2: Hechos vs. Juicios e interpretaciones', 'Módulo 3: Cómo hacer pedidos y reclamos efectivos', 'Módulo 4: Regulación emocional en el diálogo', 'Material PDF descargable + 1 Sesión 1 a 1 GRATIS'], '$35.000 ARS')" class="flex-1 py-3 rounded-xl border border-forest-200 text-forest-800 text-sm font-semibold hover:bg-forest-50 transition-colors">
                                 Ver Temario
                             </button>
-                            <button onclick="openBuyCourseModal('El Arte de las Conversaciones Difíciles', 'USD 49')" class="flex-1 py-3 rounded-xl bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors">
+                            <button onclick="openBuyCourseModal('El Arte de las Conversaciones Difíciles', '$35.000 ARS')" class="flex-1 py-3 rounded-xl bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors">
                                 Comprar
                             </button>
                         </div>
@@ -427,7 +427,7 @@
                     <div class="h-44 bg-gradient-to-br from-forest-600 to-forest-800 p-6 flex flex-col justify-between text-white">
                         <div class="flex items-center justify-between gap-2">
                             <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-semibold">6 Módulos • Videos + PDF</span>
-                            <span class="font-bold text-base bg-white text-forest-900 px-3 py-0.5 rounded-full">USD 89</span>
+                            <span class="font-bold text-sm bg-white text-forest-900 px-3 py-0.5 rounded-full">$35.000</span>
                         </div>
                         <h3 class="text-xl font-bold leading-snug">Liderazgo Ontológico Consciente</h3>
                     </div>
@@ -446,10 +446,10 @@
                             </div>
                         </div>
                         <div class="flex gap-2.5 pt-1">
-                            <button onclick="openCourseModal('Liderazgo Ontológico Consciente', ['Módulo 1: La autoridad vs. el liderazgo elegido', 'Módulo 2: Promesas, ofertas y pedidos impecables', 'Módulo 3: Construcción de confianza en equipos', 'Módulo 4: El arte del feedback constructivo', 'Material PDF descargable + 1 Sesión 1 a 1 GRATIS'], 'USD 89')" class="flex-1 py-3 rounded-xl border border-forest-200 text-forest-800 text-sm font-semibold hover:bg-forest-50 transition-colors">
+                            <button onclick="openCourseModal('Liderazgo Ontológico Consciente', ['Módulo 1: La autoridad vs. el liderazgo elegido', 'Módulo 2: Promesas, ofertas y pedidos impecables', 'Módulo 3: Construcción de confianza en equipos', 'Módulo 4: El arte del feedback constructivo', 'Material PDF descargable + 1 Sesión 1 a 1 GRATIS'], '$35.000 ARS')" class="flex-1 py-3 rounded-xl border border-forest-200 text-forest-800 text-sm font-semibold hover:bg-forest-50 transition-colors">
                                 Ver Temario
                             </button>
-                            <button onclick="openBuyCourseModal('Liderazgo Ontológico Consciente', 'USD 89')" class="flex-1 py-3 rounded-xl bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors">
+                            <button onclick="openBuyCourseModal('Liderazgo Ontológico Consciente', '$35.000 ARS')" class="flex-1 py-3 rounded-xl bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors">
                                 Comprar
                             </button>
                         </div>
@@ -461,7 +461,7 @@
                     <div class="h-44 bg-gradient-to-br from-forest-800 to-forest-950 p-6 flex flex-col justify-between text-white">
                         <div class="flex items-center justify-between gap-2">
                             <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-semibold">Intensivo • Videos + PDF</span>
-                            <span class="font-bold text-base bg-white text-forest-900 px-3 py-0.5 rounded-full">USD 39</span>
+                            <span class="font-bold text-sm bg-white text-forest-900 px-3 py-0.5 rounded-full">$35.000</span>
                         </div>
                         <h3 class="text-xl font-bold leading-snug">Gestión Emocional y Propósito</h3>
                     </div>
@@ -480,10 +480,10 @@
                             </div>
                         </div>
                         <div class="flex gap-2.5 pt-1">
-                            <button onclick="openCourseModal('Gestión Emocional y Propósito', ['Módulo 1: Emociones vs. Estados de ánimo', 'Módulo 2: Salir de la queja y la resignación', 'Módulo 3: Corporalidad para la calma y el foco', 'Módulo 4: Diseño de metas con sentido', 'Workbook PDF descargable + 1 Sesión 1 a 1 GRATIS'], 'USD 39')" class="flex-1 py-3 rounded-xl border border-forest-200 text-forest-800 text-sm font-semibold hover:bg-forest-50 transition-colors">
+                            <button onclick="openCourseModal('Gestión Emocional y Propósito', ['Módulo 1: Emociones vs. Estados de ánimo', 'Módulo 2: Salir de la queja y la resignación', 'Módulo 3: Corporalidad para la calma y el foco', 'Módulo 4: Diseño de metas con sentido', 'Workbook PDF descargable + 1 Sesión 1 a 1 GRATIS'], '$35.000 ARS')" class="flex-1 py-3 rounded-xl border border-forest-200 text-forest-800 text-sm font-semibold hover:bg-forest-50 transition-colors">
                                 Ver Temario
                             </button>
-                            <button onclick="openBuyCourseModal('Gestión Emocional y Propósito', 'USD 39')" class="flex-1 py-3 rounded-xl bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors">
+                            <button onclick="openBuyCourseModal('Gestión Emocional y Propósito', '$35.000 ARS')" class="flex-1 py-3 rounded-xl bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors">
                                 Comprar
                             </button>
                         </div>
@@ -1042,25 +1042,39 @@
                 </button>
             </div>
 
-            <div class="bg-forest-50 border border-forest-100 rounded-2xl p-4 mb-4 space-y-2 text-xs text-forest-900/80">
-                <div class="flex items-center justify-between font-bold text-sm text-forest-900 pb-2 border-b border-forest-200/60">
-                    <span>Total a abonar:</span>
-                    <span id="buy-course-price" class="text-forest-700 text-base"></span>
+            <div id="buy-course-form-wrapper">
+                <div class="bg-forest-50 border border-forest-100 rounded-2xl p-4 mb-4 space-y-2 text-xs text-forest-900/80">
+                    <div class="flex items-center justify-between font-bold text-sm text-forest-900 pb-2 border-b border-forest-200/60">
+                        <span>Total a abonar:</span>
+                        <span id="buy-course-price" class="text-forest-700 text-base"></span>
+                    </div>
+                    <p class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-forest-600 shrink-0"></i> Acceso completo a los Videos HD + PDFs descargables</p>
+                    <p class="flex items-center gap-2 font-semibold text-forest-800"><i data-lucide="gift" class="w-4 h-4 text-forest-700 shrink-0"></i> Incluye 1 Sesión de Coaching 1 a 1 GRATIS</p>
+                    <p class="text-[11px] text-forest-700 pt-1">Apenas confirmes tu pedido por WhatsApp, te enviamos el link de pago, el acceso al curso y coordinamos tu sesión gratuita.</p>
                 </div>
-                <p class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-forest-600 shrink-0"></i> Acceso completo a los Videos HD + PDFs descargables</p>
-                <p class="flex items-center gap-2 font-semibold text-forest-800"><i data-lucide="gift" class="w-4 h-4 text-forest-700 shrink-0"></i> Incluye 1 Sesión de Coaching 1 a 1 GRATIS</p>
-                <p class="text-[11px] text-forest-700 pt-1">Apenas confirmes el pago, recibirás el enlace de descarga en tu correo/WhatsApp y coordinamos tu sesión gratuita.</p>
+
+                <form id="buy-course-form" class="space-y-3">
+                    <input type="text" id="buy-name" required placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                    <input type="email" id="buy-email" required placeholder="Email donde recibirás los videos y PDF" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                    <input type="tel" id="buy-phone" required placeholder="Tu WhatsApp" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                    <button type="submit" class="w-full bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                        Pre-Reservar Compra
+                    </button>
+                </form>
             </div>
 
-            <form id="buy-course-form" class="space-y-3">
-                <input type="text" id="buy-name" required placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
-                <input type="email" id="buy-email" required placeholder="Email donde recibirás los videos y PDF" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
-                <input type="tel" id="buy-phone" required placeholder="Tu WhatsApp" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
-                <button type="submit" class="w-full bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2">
-                    <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-                    Confirmar Compra y Recibir Acceso
-                </button>
-            </form>
+            <div id="buy-course-success" class="hidden text-center py-4 space-y-4">
+                <div class="w-14 h-14 rounded-full bg-forest-100 text-forest-700 flex items-center justify-center mx-auto">
+                    <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+                </div>
+                <h4 class="text-xl font-bold text-forest-900">¡Compra Pre-Reservada!</h4>
+                <p id="buy-course-summary" class="text-sm text-forest-900/75 leading-relaxed"></p>
+                <a id="buy-course-wa-link" href="#" target="_blank" rel="noopener" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Enviar Confirmación por WhatsApp
+                </a>
+            </div>
         </div>
     </div>
 
@@ -1076,14 +1090,65 @@
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
+
             <form id="event-register-form" class="space-y-3.5">
                 <input type="text" id="ev-name" required placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
                 <input type="email" id="ev-email" required placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
                 <input type="tel" id="ev-phone" required placeholder="Tu WhatsApp" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
                 <button type="submit" class="w-full bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl transition-colors">
-                    Confirmar mi Asistencia
+                    Pre-Reservar mi Lugar
                 </button>
             </form>
+
+            <div id="event-success" class="hidden text-center py-4 space-y-4">
+                <div class="w-14 h-14 rounded-full bg-forest-100 text-forest-700 flex items-center justify-center mx-auto">
+                    <i data-lucide="calendar-check-2" class="w-8 h-8"></i>
+                </div>
+                <h4 class="text-xl font-bold text-forest-900">¡Cupo Pre-Reservado!</h4>
+                <p id="event-summary" class="text-sm text-forest-900/75 leading-relaxed"></p>
+                <a id="event-wa-link" href="#" target="_blank" rel="noopener" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Enviar Confirmación por WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Consulta / Solicitud de Servicio -->
+    <div id="service-inquiry-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-start justify-between gap-4 mb-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-forest-600">Solicitud Pre-Reservada</span>
+                    <h4 id="inq-service-name" class="text-xl font-bold text-forest-900 mt-1"></h4>
+                    <p id="inq-service-desc" class="text-xs text-forest-700 mt-1"></p>
+                </div>
+                <button onclick="closeInquiryModal()" class="text-forest-800/60 hover:text-forest-900 p-1">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <form id="service-inquiry-form" class="space-y-3">
+                <input type="text" id="inq-name" required placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                <input type="tel" id="inq-phone" required placeholder="Tu WhatsApp" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                <input type="email" id="inq-email" required placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                <textarea id="inq-notes" rows="3" placeholder="Cuéntame brevemente qué necesitas o si es para un equipo..." class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500 resize-none"></textarea>
+                <button type="submit" class="w-full bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl transition-colors">
+                    Pre-Reservar Solicitud
+                </button>
+            </form>
+
+            <div id="inq-success" class="hidden text-center py-4 space-y-4">
+                <div class="w-14 h-14 rounded-full bg-forest-100 text-forest-700 flex items-center justify-center mx-auto">
+                    <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+                </div>
+                <h4 class="text-xl font-bold text-forest-900">¡Solicitud Pre-Reservada!</h4>
+                <p id="inq-summary" class="text-sm text-forest-900/75 leading-relaxed"></p>
+                <a id="inq-wa-link" href="#" target="_blank" rel="noopener" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Enviar Confirmación por WhatsApp
+                </a>
+            </div>
         </div>
     </div>
 
