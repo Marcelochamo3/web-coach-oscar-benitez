@@ -420,7 +420,7 @@ window.openCourseModal = function(title, modules, price) {
 
     document.getElementById('course-modal-cta').onclick = () => {
         closeCourseModal();
-        preselectMessage(`Hola Oscar, quiero inscribirme al curso online: ${title}.`);
+        openBuyCourseModal(title, price);
     };
 
     modal.classList.remove('hidden');
@@ -428,6 +428,33 @@ window.openCourseModal = function(title, modules, price) {
 
 window.closeCourseModal = function() {
     document.getElementById('course-modal').classList.add('hidden');
+};
+
+window.openBuyCourseModal = function(title, price) {
+    const modal = document.getElementById('buy-course-modal');
+    document.getElementById('buy-course-title').textContent = title;
+    document.getElementById('buy-course-price').textContent = price;
+    modal.classList.remove('hidden');
+    if (window.lucide) lucide.createIcons();
+
+    const form = document.getElementById('buy-course-form');
+    form.onsubmit = (e) => {
+        e.preventDefault();
+        const name = document.getElementById('buy-name').value.trim();
+        const email = document.getElementById('buy-email').value.trim();
+        const phone = document.getElementById('buy-phone').value.trim();
+
+        const waText = encodeURIComponent(
+            `Hola Oscar, quiero comprar el curso online:\n• Curso: ${title} (${price})\n• Incluye: Videos + PDF + 1 Sesión 1 a 1 GRATIS\n• Nombre: ${name}\n• Email para recibir acceso: ${email}\n• WhatsApp: ${phone}`
+        );
+        window.open(`https://wa.me/5493624237272?text=${waText}`, '_blank', 'noopener');
+        form.reset();
+        closeBuyCourseModal();
+    };
+};
+
+window.closeBuyCourseModal = function() {
+    document.getElementById('buy-course-modal').classList.add('hidden');
 };
 
 window.openEventModal = function(eventTitle) {
