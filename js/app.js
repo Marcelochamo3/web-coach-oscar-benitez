@@ -121,6 +121,7 @@ const quizResultsMap = {
 
 let currentQuizStep = 0;
 let quizScores = { proposito: 0, vinculos: 0, liderazgo: 0 };
+let quizAnswers = [];
 
 function initQuiz() {
     renderQuizStep();
@@ -137,8 +138,8 @@ function renderQuizStep() {
     container.innerHTML = `
         <h3 class="text-lg sm:text-xl font-bold text-forest-900 mb-4">${q.question}</h3>
         <div class="space-y-3">
-            ${q.options.map(opt => `
-                <button type="button" onclick="answerQuiz('${opt.area}')" class="w-full text-left p-4 rounded-2xl border border-forest-200 bg-forest-50/40 hover:bg-forest-100/70 hover:border-forest-400 text-sm sm:text-base font-medium text-forest-900 transition-all flex items-center justify-between group">
+            ${q.options.map((opt, idx) => `
+                <button type="button" onclick="answerQuiz('${opt.area}', ${idx})" class="w-full text-left p-4 rounded-2xl border border-forest-200 bg-forest-50/40 hover:bg-forest-100/70 hover:border-forest-400 text-sm sm:text-base font-medium text-forest-900 transition-all flex items-center justify-between group">
                     <span>${opt.label}</span>
                     <span class="text-forest-600 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                 </button>
@@ -147,8 +148,10 @@ function renderQuizStep() {
     `;
 }
 
-window.answerQuiz = function(area) {
+window.answerQuiz = function(area, optIdx) {
     quizScores[area] = (quizScores[area] || 0) + 1;
+    const chosen = quizQuestions[currentQuizStep]?.options[optIdx]?.label;
+    if (chosen) quizAnswers.push(chosen);
     currentQuizStep++;
 
     if (currentQuizStep < quizQuestions.length) {
@@ -170,11 +173,20 @@ function showQuizResult() {
     titleEl.textContent = data.title;
     descEl.textContent = data.desc;
 
+    const answersSummary = quizAnswers.map((a, i) => `${i + 1}) ${a}`).join('\n');
+    const waBtn = document.getElementById('quiz-wa-btn');
+    if (waBtn) {
+        const waText = encodeURIComponent(
+            `Hola Oscar, completé el test en tu web:\n• ${data.title}\n• Mis respuestas:\n${answersSummary}\n\nMe gustaría conversar sobre este enfoque.`
+        );
+        waBtn.href = `https://wa.me/5493624237272?text=${waText}`;
+    }
+
     const bookBtn = document.getElementById('quiz-book-btn');
     if (bookBtn) {
         bookBtn.onclick = (e) => {
             e.preventDefault();
-            openInquiryModal(data.title, 'Sesión recomendada según tu autodiagnóstico');
+            openInquiryModal(data.title, 'Sesión recomendada según tu autodiagnóstico', `Mis respuestas del test:\n${answersSummary}`);
         };
     }
 
@@ -187,6 +199,7 @@ function showQuizResult() {
 window.resetQuiz = function() {
     currentQuizStep = 0;
     quizScores = { proposito: 0, vinculos: 0, liderazgo: 0 };
+    quizAnswers = [];
     document.getElementById('quiz-result').classList.add('hidden');
     document.getElementById('quiz-container').classList.remove('hidden');
     renderQuizStep();
@@ -509,7 +522,7 @@ window.closeEventModal = function() {
     document.getElementById('event-modal').classList.add('hidden');
 };
 
-window.openInquiryModal = function(serviceName, serviceDesc) {
+window.openInquiryModal = function(serviceName, serviceDesc, prefillNotes = '') {
     const modal = document.getElementById('service-inquiry-modal');
     const form = document.getElementById('service-inquiry-form');
     const success = document.getElementById('inq-success');
@@ -519,6 +532,9 @@ window.openInquiryModal = function(serviceName, serviceDesc) {
     form.classList.remove('hidden');
     success.classList.add('hidden');
     form.reset();
+    if (prefillNotes) {
+        document.getElementById('inq-notes').value = prefillNotes;
+    }
     modal.classList.remove('hidden');
     if (window.lucide) lucide.createIcons();
 
