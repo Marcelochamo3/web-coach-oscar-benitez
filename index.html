@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oscar Benítez - Coach Ontológico Profesional. Sesiones 1 a 1, Coaching Ejecutivo, Cursos Online, Talleres y Conferencias. Transforma tu observador y diseña tu futuro.">
+    <meta name="theme-color" content="#1B4332">
+    <title>Oscar Benítez | Coach Ontológico Profesional</title>
+
+    <!-- Google Fonts: Playfair Display + Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            DEFAULT: '#1B4332',
+                            50: '#F1F7F4',
+                            100: '#D8F3DC',
+                            200: '#B7E4C7',
+                            300: '#95D5B2',
+                            400: '#74C69D',
+                            500: '#52B788',
+                            600: '#40916C',
+                            700: '#2D6A4F',
+                            800: '#1B4332',
+                            900: '#0F291E',
+                        },
+                        cream: '#FAFBF9',
+                        earth: '#C8A97E',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="antialiased selection:bg-forest-100 selection:text-forest-900">
+
+    <!-- ======================================================================
+         NAVBAR (100% Responsive + Mobile Drawer)
+         ====================================================================== -->
+    <header class="navbar-glass fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-forest-800 text-white flex items-center justify-center font-serif font-bold text-lg shadow-sm group-hover:bg-forest-700 transition-colors">
+                        OB
+                    </div>
+                    <div>
+                        <span class="block font-serif font-bold text-base sm:text-lg text-forest-900 leading-tight">Oscar Benítez</span>
+                        <span class="block text-[11px] sm:text-xs font-medium tracking-wider uppercase text-forest-600">Coach Ontológico</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-forest-900/80">
+                    <a href="#sobre-mi" class="hover:text-forest-700 transition-colors">Sobre Mí</a>
+                    <a href="#servicios" class="hover:text-forest-700 transition-colors">Servicios</a>
+                    <a href="#cursos" class="hover:text-forest-700 transition-colors">Cursos Online</a>
+                    <a href="#agenda" class="hover:text-forest-700 transition-colors">Agenda</a>
+                    <a href="#videos" class="hover:text-forest-700 transition-colors">Videos</a>
+                    <a href="#contacto" class="hover:text-forest-700 transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Desktop CTA + Mobile Menu Button -->
+                <div class="flex items-center gap-3">
+                    <a href="#calendario" class="hidden sm:inline-flex items-center gap-2 bg-forest-700 hover:bg-forest-800 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95">
+                        <i data-lucide="calendar-check" class="w-4 h-4"></i>
+                        Agendar Sesión
+                    </a>
+
+                    <button id="mobile-menu-btn" aria-label="Abrir menú" class="lg:hidden p-2.5 rounded-xl text-forest-800 hover:bg-forest-50 transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-forest-100 shadow-xl">
+            <div class="px-4 py-5 space-y-1.5">
+                <a href="#inicio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-forest-900 hover:bg-forest-50">Inicio</a>
+                <a href="#sobre-mi" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-forest-900 hover:bg-forest-50">Sobre Oscar</a>
+                <a href="#autodiagnostico" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-forest-900 hover:bg-forest-50">Autodiagnóstico</a>
+                <a href="#servicios" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-forest-900 hover:bg-forest-50">Servicios 1 a 1</a>
+                <a href="#cursos" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-forest-900 hover:bg-forest-50">Cursos Online</a>
+                <a href="#agenda" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-forest-900 hover:bg-forest-50">Agenda de Eventos</a>
+                <a href="#videos" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-forest-900 hover:bg-forest-50">Videos de YouTube</a>
+                <a href="#contacto" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-forest-900 hover:bg-forest-50">Mensajes y Contacto</a>
+                <div class="pt-3 border-t border-forest-100">
+                    <a href="#calendario" class="mobile-link flex items-center justify-center gap-2 w-full bg-forest-700 text-white font-semibold py-3.5 rounded-xl shadow-sm">
+                        <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                        Agendar Sesión Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======================================================================
+         HERO SECTION
+         ====================================================================== -->
+    <section id="inicio" class="hero-gradient pt-28 pb-16 sm:pt-36 sm:pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <!-- Texto Principal -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-forest-100/80 border border-forest-200 text-forest-800 text-xs sm:text-sm font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-forest-600 animate-pulse"></span>
+                        Coaching Ontológico Profesional & Liderazgo
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-forest-900 leading-[1.12] tracking-tight">
+                        Cambia tu observador, <span class="text-forest-700 italic font-semibold">transforma tu realidad</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-forest-900/75 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Acompaño a personas, líderes y equipos a destrabar conversaciones difíciles, gestionar sus emociones y diseñar acciones concretas hacia una vida con propósito y bienestar.
+                    </p>
+
+                    <!-- Botones de acción -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+                        <a href="#calendario" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-forest-700 hover:bg-forest-800 text-white font-semibold px-7 py-4 rounded-2xl shadow-botanical hover:shadow-lg transition-all active:scale-95">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                            Agendar Sesión Exploratoria
+                        </a>
+                        <a href="#cursos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white hover:bg-forest-50 text-forest-800 border border-forest-200 font-semibold px-7 py-4 rounded-2xl transition-all">
+                            <i data-lucide="play-circle" class="w-5 h-5 text-forest-600"></i>
+                            Explorar Cursos y Talleres
+                        </a>
+                    </div>
+
+                    <!-- Indicadores de Confianza -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-forest-200/70 max-w-xl mx-auto lg:mx-0">
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-forest-800">+10</p>
+                            <p class="text-xs sm:text-sm text-forest-900/65">Años de trayectoria</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-forest-800">+500</p>
+                            <p class="text-xs sm:text-sm text-forest-900/65">Procesos acompañados</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl sm:text-3xl font-bold text-forest-800">100%</p>
+                            <p class="text-xs sm:text-sm text-forest-900/65">Online y Presencial</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Retrato del Coach -->
+                <div class="lg:col-span-5 relative max-w-md mx-auto lg:max-w-none w-full">
+                    <div class="relative rounded-[2rem] overflow-hidden shadow-botanical-lg border-4 border-white bg-forest-100 aspect-[4/5]">
+                        <img src="assets/oscar-portrait.jpg" alt="Oscar Benítez - Coach Ontológico Profesional" class="w-full h-full object-cover object-top" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback elegante si no carga imagen -->
+                        <div class="hidden w-full h-full bg-gradient-to-br from-forest-800 to-forest-600 text-white flex-col items-center justify-center p-8 text-center">
+                            <div class="w-24 h-24 rounded-full bg-white/15 flex items-center justify-center font-serif text-4xl font-bold mb-4">OB</div>
+                            <p class="font-serif text-2xl font-bold">Oscar Benítez</p>
+                            <p class="text-forest-100 text-sm mt-1">Coach Ontológico Profesional</p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta flotante de estado -->
+                    <div class="absolute -bottom-5 left-4 right-4 sm:left-6 sm:right-auto sm:w-72 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-botanical border border-forest-100 flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center shrink-0">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold uppercase tracking-wider text-forest-600">Agenda Abierta</p>
+                            <p class="text-sm font-bold text-forest-900">Turnos disponibles esta semana</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         SOBRE OSCAR & PILARES DEL COACHING ONTOLÓGICO
+         ====================================================================== -->
+    <section id="sobre-mi" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-14 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-forest-600">El Enfoque Ontológico</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-forest-900 mt-2">¿Quién es Oscar Benítez y cómo trabajamos?</h2>
+                <p class="text-forest-900/70 mt-4 text-base sm:text-lg leading-relaxed">
+                    El Coaching Ontológico no te da recetas mágicas; te invita a observar cómo estás interpretando el mundo. Trabajamos en la coherencia de tus tres dominios fundamentales:
+                </p>
+            </div>
+
+            <!-- 3 Pilares -->
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+                <div class="reveal bg-forest-50/70 border border-forest-100 rounded-3xl p-7 hover:shadow-botanical transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-700 text-white flex items-center justify-center mb-5">
+                        <i data-lucide="message-square-quote" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-forest-900 mb-2">1. Lenguaje</h3>
+                    <p class="text-sm sm:text-base text-forest-900/75 leading-relaxed">
+                        Las palabras no solo describen la realidad, la crean. Aprendemos a formular pedidos claros, promesas confiables y conversaciones que abren posibilidades.
+                    </p>
+                </div>
+
+                <div class="reveal bg-forest-50/70 border border-forest-100 rounded-3xl p-7 hover:shadow-botanical transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-700 text-white flex items-center justify-center mb-5">
+                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-forest-900 mb-2">2. Emocionalidad</h3>
+                    <p class="text-sm sm:text-base text-forest-900/75 leading-relaxed">
+                        Identificamos los estados de ánimo que hoy te limitan (resignación, miedo, exigencia) para transitar hacia emociones expansivas como la serenidad y la ambición sana.
+                    </p>
+                </div>
+
+                <div class="reveal bg-forest-50/70 border border-forest-100 rounded-3xl p-7 hover:shadow-botanical transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-700 text-white flex items-center justify-center mb-5">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-forest-900 mb-2">3. Corporalidad</h3>
+                    <p class="text-sm sm:text-base text-forest-900/75 leading-relaxed">
+                        Tu postura y energía hablan antes que tú. Alineamos tu presencia física con tus objetivos para que tu acción sea firme, coherente y sostenible.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tarjeta Biográfica -->
+            <div class="reveal bg-forest-800 text-white rounded-3xl p-8 sm:p-12 shadow-botanical-lg">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <span class="inline-block px-3 py-1 rounded-full bg-white/15 text-forest-100 text-xs font-semibold uppercase tracking-wider">Mi Propósito</span>
+                        <h3 class="text-2xl sm:text-3xl font-bold leading-snug">
+                            "Mi compromiso es ser un espejo honesto y humano para que descubras recursos que ya habitan en ti."
+                        </h3>
+                        <p class="text-forest-100/90 text-sm sm:text-base leading-relaxed">
+                            Soy <strong>Oscar Benítez</strong>, Coach Ontológico Profesional avalado por estándares internacionales (AACOP / FICOP), facilitador de equipos de alto desempeño y creador de programas de transformación personal. Creo en un coaching cercano, sin tecnicismos vacíos, enfocado en resultados reales para tu vida cotidiana y profesional.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-4 flex flex-col gap-3">
+                        <div class="bg-white/10 rounded-2xl p-4 flex items-center gap-3">
+                            <i data-lucide="award" class="w-6 h-6 text-forest-300 shrink-0"></i>
+                            <span class="text-sm font-medium">Certificación Ontológica Internacional</span>
+                        </div>
+                        <div class="bg-white/10 rounded-2xl p-4 flex items-center gap-3">
+                            <i data-lucide="users" class="w-6 h-6 text-forest-300 shrink-0"></i>
+                            <span class="text-sm font-medium">Especialista en Liderazgo & Equipos</span>
+                        </div>
+                        <div class="bg-white/10 rounded-2xl p-4 flex items-center gap-3">
+                            <i data-lucide="video" class="w-6 h-6 text-forest-300 shrink-0"></i>
+                            <span class="text-sm font-medium">Atención Global (Online / Presencial)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         AUTODIAGNÓSTICO INTERACTIVO (LEAD MAGNET EN PÁGINA)
+         ====================================================================== -->
+    <section id="autodiagnostico" class="py-20 bg-forest-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-botanical border border-forest-100 reveal">
+                <div class="text-center mb-8">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest-100 text-forest-800 text-xs font-bold uppercase tracking-wider">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Herramienta Interactiva
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-forest-900 mt-3">¿En qué área necesitas un cambio de observador?</h2>
+                    <p class="text-sm sm:text-base text-forest-900/70 mt-2">Responde 3 preguntas rápidas y recibe una recomendación personalizada al instante.</p>
+                </div>
+
+                <!-- Contenedor del Quiz -->
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Barra de progreso -->
+                    <div class="w-full bg-forest-100 h-2 rounded-full overflow-hidden">
+                        <div id="quiz-progress" class="bg-forest-600 h-full transition-all duration-300" style="width: 33%;"></div>
+                    </div>
+                    <div id="quiz-step-content">
+                        <!-- Inyectado dinámicamente por JS -->
+                    </div>
+                </div>
+
+                <!-- Resultado del Quiz -->
+                <div id="quiz-result" class="hidden text-center space-y-5 py-4">
+                    <div class="w-14 h-14 rounded-2xl bg-forest-100 text-forest-700 flex items-center justify-center mx-auto">
+                        <i data-lucide="compass" class="w-7 h-7"></i>
+                    </div>
+                    <h3 id="quiz-result-title" class="text-2xl font-bold text-forest-900"></h3>
+                    <p id="quiz-result-desc" class="text-forest-900/75 max-w-xl mx-auto leading-relaxed"></p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3">
+                        <a href="#calendario" id="quiz-book-btn" class="w-full sm:w-auto bg-forest-700 hover:bg-forest-800 text-white font-semibold px-6 py-3.5 rounded-xl transition-all">
+                            Agendar Sesión con este Enfoque
+                        </a>
+                        <button onclick="resetQuiz()" class="w-full sm:w-auto text-forest-700 hover:bg-forest-50 font-medium px-5 py-3.5 rounded-xl transition-all">
+                            Volver a realizar test
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         SERVICIOS 1 A 1 Y EMPRESAS
+         ====================================================================== -->
+    <section id="servicios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-forest-600">Procesos de Acompañamiento</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-forest-900 mt-2">Servicios de Coaching</h2>
+                <p class="text-forest-900/70 mt-3 text-base sm:text-lg">Espacios diseñados a la medida de tu momento personal, profesional u organizacional.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Servicio 1 -->
+                <div class="reveal bg-cream border border-forest-100 rounded-3xl p-7 flex flex-col justify-between hover:border-forest-300 hover:shadow-botanical transition-all">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-forest-100 text-forest-800 text-xs font-semibold mb-4">Personal</span>
+                        <h3 class="text-2xl font-bold text-forest-900 mb-3">Coaching 1 a 1</h3>
+                        <p class="text-sm text-forest-900/75 leading-relaxed mb-5">
+                            Sesiones individuales confidenciales para ganar claridad, superar bloqueos emocionales, tomar decisiones importantes y mejorar tus vínculos.
+                        </p>
+                        <ul class="space-y-2.5 text-sm text-forest-900/80 mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-600 shrink-0"></i> Sesiones de 60 minutos</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-600 shrink-0"></i> Modalidad Online (Zoom/Meet) o Presencial</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-600 shrink-0"></i> Plan de acción entre sesiones</li>
+                        </ul>
+                    </div>
+                    <a href="#calendario" class="w-full text-center bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl transition-colors">
+                        Reservar Sesión
+                    </a>
+                </div>
+
+                <!-- Servicio 2 (Destacado) -->
+                <div class="reveal bg-forest-800 text-white rounded-3xl p-7 flex flex-col justify-between shadow-botanical-lg relative overflow-hidden">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-forest-500/30 text-forest-100 text-xs font-semibold mb-4">Liderazgo & Carrera</span>
+                        <h3 class="text-2xl font-bold mb-3">Coaching Ejecutivo</h3>
+                        <p class="text-sm text-forest-100/85 leading-relaxed mb-5">
+                            Para directivos, emprendedores y profesionales que buscan potenciar su liderazgo consciente, comunicación asertiva y gestión del estrés.
+                        </p>
+                        <ul class="space-y-2.5 text-sm text-forest-100/90 mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-300 shrink-0"></i> Diagnóstico de estilo de liderazgo</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-300 shrink-0"></i> Conversaciones difíciles y delegación</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-300 shrink-0"></i> Seguimiento semanal directo</li>
+                        </ul>
+                    </div>
+                    <a href="#calendario" class="w-full text-center bg-white hover:bg-forest-50 text-forest-900 font-semibold py-3.5 rounded-xl transition-colors">
+                        Solicitar Entrevista
+                    </a>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="reveal bg-cream border border-forest-100 rounded-3xl p-7 flex flex-col justify-between hover:border-forest-300 hover:shadow-botanical transition-all">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-forest-100 text-forest-800 text-xs font-semibold mb-4">Organizaciones</span>
+                        <h3 class="text-2xl font-bold text-forest-900 mb-3">Empresas y Equipos</h3>
+                        <p class="text-sm text-forest-900/75 leading-relaxed mb-5">
+                            Talleres in-company y facilitación de equipos para fortalecer la confianza, el clima laboral y el cumplimiento de metas compartidas.
+                        </p>
+                        <ul class="space-y-2.5 text-sm text-forest-900/80 mb-6">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-600 shrink-0"></i> Dinámicas prácticas y vivenciales</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-600 shrink-0"></i> Comunicación efectiva entre áreas</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-forest-600 shrink-0"></i> Propuesta adaptada a tu empresa</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center bg-forest-50 hover:bg-forest-100 text-forest-800 border border-forest-200 font-semibold py-3.5 rounded-xl transition-colors">
+                        Cotizar para mi Equipo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         CURSOS ONLINE
+         ====================================================================== -->
+    <section id="cursos" class="py-20 bg-forest-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 reveal">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-forest-600">Formación a tu Ritmo</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-forest-900 mt-2">Cursos Online</h2>
+                    <p class="text-forest-900/70 mt-2 max-w-xl">Aprende herramientas prácticas de coaching ontológico aplicadas a tu día a día.</p>
+                </div>
+                <span class="inline-flex items-center gap-2 text-sm font-medium text-forest-700 bg-white px-4 py-2 rounded-full border border-forest-200 self-start">
+                    <i data-lucide="laptop" class="w-4 h-4"></i> Acceso inmediato 24/7
+                </span>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Curso 1 -->
+                <div class="reveal bg-white rounded-3xl overflow-hidden border border-forest-100 shadow-sm hover:shadow-botanical transition-all flex flex-col">
+                    <div class="h-44 bg-gradient-to-br from-forest-700 to-forest-900 p-6 flex flex-col justify-between text-white">
+                        <span class="self-start px-3 py-1 rounded-full bg-white/20 text-xs font-semibold">4 Módulos • Grabado + Guía</span>
+                        <h3 class="text-xl font-bold leading-snug">El Arte de las Conversaciones Difíciles</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-sm text-forest-900/75 leading-relaxed">
+                            Aprende a decir lo que piensas con respeto y firmeza, gestionar reclamos sin romper vínculos y escuchar con empatía real.
+                        </p>
+                        <div class="flex items-center justify-between text-xs font-medium text-forest-700 bg-forest-50 px-3.5 py-2.5 rounded-xl">
+                            <span><i data-lucide="clock" class="w-3.5 h-3.5 inline mr-1"></i>6 horas totales</span>
+                            <span><i data-lucide="award" class="w-3.5 h-3.5 inline mr-1"></i>Certificado</span>
+                        </div>
+                        <div class="flex gap-2.5">
+                            <button onclick="openCourseModal('El Arte de las Conversaciones Difíciles', ['Módulo 1: Anatomía de una conversación postergada', 'Módulo 2: Hechos vs. Juicios e interpretaciones', 'Módulo 3: Cómo hacer pedidos y reclamos efectivos', 'Módulo 4: Regulación emocional en el diálogo'], 'USD 49')" class="flex-1 py-3 rounded-xl border border-forest-200 text-forest-800 text-sm font-semibold hover:bg-forest-50 transition-colors">
+                                Ver Temario
+                            </button>
+                            <button onclick="preselectMessage('Hola Oscar, quiero inscribirme al curso online: El Arte de las Conversaciones Difíciles.')" class="flex-1 py-3 rounded-xl bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors">
+                                Inscribirme
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curso 2 -->
+                <div class="reveal bg-white rounded-3xl overflow-hidden border border-forest-100 shadow-sm hover:shadow-botanical transition-all flex flex-col">
+                    <div class="h-44 bg-gradient-to-br from-forest-600 to-forest-800 p-6 flex flex-col justify-between text-white">
+                        <span class="self-start px-3 py-1 rounded-full bg-white/20 text-xs font-semibold">6 Semanas • Híbrido</span>
+                        <h3 class="text-xl font-bold leading-snug">Liderazgo Ontológico Consciente</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-sm text-forest-900/75 leading-relaxed">
+                            De jefe operativo a líder inspirador. Herramientas de coordinación de acciones, confianza organizacional y feedback generativo.
+                        </p>
+                        <div class="flex items-center justify-between text-xs font-medium text-forest-700 bg-forest-50 px-3.5 py-2.5 rounded-xl">
+                            <span><i data-lucide="clock" class="w-3.5 h-3.5 inline mr-1"></i>12 horas + Q&A</span>
+                            <span><i data-lucide="award" class="w-3.5 h-3.5 inline mr-1"></i>Certificado</span>
+                        </div>
+                        <div class="flex gap-2.5">
+                            <button onclick="openCourseModal('Liderazgo Ontológico Consciente', ['Módulo 1: La autoridad vs. el liderazgo elegido', 'Módulo 2: Promesas, ofertas y pedidos impecables', 'Módulo 3: Construcción de confianza en equipos', 'Módulo 4: El arte del feedback constructivo'], 'USD 89')" class="flex-1 py-3 rounded-xl border border-forest-200 text-forest-800 text-sm font-semibold hover:bg-forest-50 transition-colors">
+                                Ver Temario
+                            </button>
+                            <button onclick="preselectMessage('Hola Oscar, me interesa el curso de Liderazgo Ontológico Consciente.')" class="flex-1 py-3 rounded-xl bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors">
+                                Inscribirme
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curso 3 -->
+                <div class="reveal bg-white rounded-3xl overflow-hidden border border-forest-100 shadow-sm hover:shadow-botanical transition-all flex flex-col">
+                    <div class="h-44 bg-gradient-to-br from-forest-800 to-forest-950 p-6 flex flex-col justify-between text-white">
+                        <span class="self-start px-3 py-1 rounded-full bg-white/20 text-xs font-semibold">Intensivo • Grabado</span>
+                        <h3 class="text-xl font-bold leading-snug">Gestión Emocional y Propósito</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                        <p class="text-sm text-forest-900/75 leading-relaxed">
+                            Sal de la ansiedad y el piloto automático. Diseña un mapa emocional saludable y reconecta con tus prioridades vitales.
+                        </p>
+                        <div class="flex items-center justify-between text-xs font-medium text-forest-700 bg-forest-50 px-3.5 py-2.5 rounded-xl">
+                            <span><i data-lucide="clock" class="w-3.5 h-3.5 inline mr-1"></i>5 horas + Workbook</span>
+                            <span><i data-lucide="award" class="w-3.5 h-3.5 inline mr-1"></i>Certificado</span>
+                        </div>
+                        <div class="flex gap-2.5">
+                            <button onclick="openCourseModal('Gestión Emocional y Propósito', ['Módulo 1: Emociones vs. Estados de ánimo', 'Módulo 2: Salir de la queja y la resignación', 'Módulo 3: Corporalidad para la calma y el foco', 'Módulo 4: Diseño de metas con sentido'], 'USD 39')" class="flex-1 py-3 rounded-xl border border-forest-200 text-forest-800 text-sm font-semibold hover:bg-forest-50 transition-colors">
+                                Ver Temario
+                            </button>
+                            <button onclick="preselectMessage('Hola Oscar, quiero acceder al curso Gestión Emocional y Propósito.')" class="flex-1 py-3 rounded-xl bg-forest-700 text-white text-sm font-semibold hover:bg-forest-800 transition-colors">
+                                Inscribirme
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         AGENDA DE EVENTOS Y TALLERES
+         ====================================================================== -->
+    <section id="agenda" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-forest-600">Próximos Encuentros</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-forest-900 mt-2">Agenda de Eventos</h2>
+                </div>
+
+                <!-- Filtros de eventos (Scroll horizontal suave en móvil) -->
+                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+                    <button class="event-filter-btn active px-4 py-2 rounded-full text-sm font-semibold bg-forest-700 text-white shrink-0 transition-all" data-filter="todos">Todos</button>
+                    <button class="event-filter-btn px-4 py-2 rounded-full text-sm font-semibold bg-forest-50 text-forest-800 hover:bg-forest-100 shrink-0 transition-all" data-filter="online">Online</button>
+                    <button class="event-filter-btn px-4 py-2 rounded-full text-sm font-semibold bg-forest-50 text-forest-800 hover:bg-forest-100 shrink-0 transition-all" data-filter="presencial">Presencial</button>
+                    <button class="event-filter-btn px-4 py-2 rounded-full text-sm font-semibold bg-forest-50 text-forest-800 hover:bg-forest-100 shrink-0 transition-all" data-filter="gratuito">Gratuitos</button>
+                </div>
+            </div>
+
+            <!-- Lista de Eventos -->
+            <div id="events-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Evento 1 -->
+                <article class="event-card reveal bg-cream border border-forest-100 rounded-3xl p-6 flex flex-col justify-between hover:shadow-botanical transition-all" data-category="online gratuito">
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div class="bg-forest-800 text-white rounded-2xl px-4 py-2.5 text-center min-w-[70px]">
+                                <span class="block text-xs uppercase tracking-wider text-forest-200">Nov</span>
+                                <span class="block font-serif text-2xl font-bold leading-none mt-0.5">22</span>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-forest-100 text-forest-800 text-xs font-bold">Online • Gratuito</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-forest-900 mb-2">Masterclass: Sal de la Procrastinación</h3>
+                        <p class="text-sm text-forest-900/75 leading-relaxed mb-4">
+                            Descubre qué conversaciones internas están frenando tus proyectos y cómo pasar del deseo a la acción comprometida.
+                        </p>
+                        <div class="space-y-1.5 text-xs text-forest-800/80 font-medium mb-6">
+                            <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-forest-600"></i> 19:00 hs (ARG) • Vía Zoom</p>
+                            <p class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-forest-600"></i> 18 cupos disponibles</p>
+                        </div>
+                    </div>
+                    <button onclick="openEventModal('Masterclass: Sal de la Procrastinación (22 Nov)')" class="w-full py-3 rounded-xl bg-forest-700 hover:bg-forest-800 text-white text-sm font-semibold transition-colors">
+                        Reservar mi Lugar
+                    </button>
+                </article>
+
+                <!-- Evento 2 -->
+                <article class="event-card reveal bg-cream border border-forest-100 rounded-3xl p-6 flex flex-col justify-between hover:shadow-botanical transition-all" data-category="presencial">
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div class="bg-forest-800 text-white rounded-2xl px-4 py-2.5 text-center min-w-[70px]">
+                                <span class="block text-xs uppercase tracking-wider text-forest-200">Nov</span>
+                                <span class="block font-serif text-2xl font-bold leading-none mt-0.5">29</span>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold">Presencial</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-forest-900 mb-2">Taller Vivencial: Cuerpo, Emoción y Vínculos</h3>
+                        <p class="text-sm text-forest-900/75 leading-relaxed mb-4">
+                            Jornada intensiva de sábado para trabajar en grupo la escucha activa, el manejo del estrés y el liderazgo personal.
+                        </p>
+                        <div class="space-y-1.5 text-xs text-forest-800/80 font-medium mb-6">
+                            <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-forest-600"></i> 09:30 a 13:30 hs • Salón Centro</p>
+                            <p class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-forest-600"></i> Últimos 7 lugares</p>
+                        </div>
+                    </div>
+                    <button onclick="openEventModal('Taller Vivencial: Cuerpo, Emoción y Vínculos (29 Nov)')" class="w-full py-3 rounded-xl bg-forest-700 hover:bg-forest-800 text-white text-sm font-semibold transition-colors">
+                        Inscribirme al Taller
+                    </button>
+                </article>
+
+                <!-- Evento 3 -->
+                <article class="event-card reveal bg-cream border border-forest-100 rounded-3xl p-6 flex flex-col justify-between hover:shadow-botanical transition-all" data-category="online">
+                    <div>
+                        <div class="flex items-start justify-between gap-4 mb-4">
+                            <div class="bg-forest-800 text-white rounded-2xl px-4 py-2.5 text-center min-w-[70px]">
+                                <span class="block text-xs uppercase tracking-wider text-forest-200">Dic</span>
+                                <span class="block font-serif text-2xl font-bold leading-none mt-0.5">05</span>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-forest-100 text-forest-800 text-xs font-bold">Online • En Vivo</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-forest-900 mb-2">Workshop: Cierre de Año y Diseño 2027</h3>
+                        <p class="text-sm text-forest-900/75 leading-relaxed mb-4">
+                            Agradece lo aprendido, cierra ciclos pendientes y traza objetivos claros y sostenibles para el próximo año.
+                        </p>
+                        <div class="space-y-1.5 text-xs text-forest-800/80 font-medium mb-6">
+                            <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-forest-600"></i> 18:30 hs • Vía Google Meet</p>
+                            <p class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-forest-600"></i> Cupos disponibles</p>
+                        </div>
+                    </div>
+                    <button onclick="openEventModal('Workshop: Cierre de Año y Diseño 2027 (05 Dic)')" class="w-full py-3 rounded-xl bg-forest-700 hover:bg-forest-800 text-white text-sm font-semibold transition-colors">
+                        Reservar mi Lugar
+                    </button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         VIDEOS DE YOUTUBE (CANAL MULTIMEDIA)
+         ====================================================================== -->
+    <section id="videos" class="py-20 bg-forest-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 reveal">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-forest-300">Píldoras de Reflexión</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold mt-2">Videos en YouTube</h2>
+                    <p class="text-forest-100/75 mt-2 max-w-xl">Charlas breves, ejercicios prácticos y reflexiones ontológicas para acompañarte cada semana.</p>
+                </div>
+                <a href="https://www.youtube.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold px-5 py-3 rounded-full border border-white/15 transition-all self-start">
+                    <i data-lucide="youtube" class="w-5 h-5 text-red-400"></i>
+                    Visitar Canal de YouTube
+                </a>
+            </div>
+
+            <!-- Grid de Videos (Reemplaza los IDs de YouTube por los reales de Oscar) -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Video 1 -->
+                <div onclick="openVideoModal('dQw4w9WgXcQ', '¿Qué es realmente el Coaching Ontológico?')" class="reveal group cursor-pointer bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-all">
+                    <div class="relative aspect-video bg-forest-800 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent"></div>
+                        <div class="w-14 h-14 rounded-full bg-forest-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                            <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                        </div>
+                        <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/60 text-xs font-medium">08:45</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-semibold text-forest-300 uppercase tracking-wider">Fundamentos</span>
+                        <h3 class="text-lg font-bold mt-1 group-hover:text-forest-200 transition-colors">¿Qué es realmente el Coaching Ontológico?</h3>
+                        <p class="text-sm text-forest-100/70 mt-2">Diferencias clave con la terapia tradicional y cómo transforma tu forma de decidir.</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div onclick="openVideoModal('dQw4w9WgXcQ', 'Cómo decir NO sin sentir culpa')" class="reveal group cursor-pointer bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-all">
+                    <div class="relative aspect-video bg-forest-800 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent"></div>
+                        <div class="w-14 h-14 rounded-full bg-forest-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                            <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                        </div>
+                        <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/60 text-xs font-medium">11:20</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-semibold text-forest-300 uppercase tracking-wider">Límites Sanos</span>
+                        <h3 class="text-lg font-bold mt-1 group-hover:text-forest-200 transition-colors">Cómo decir NO sin sentir culpa</h3>
+                        <p class="text-sm text-forest-100/70 mt-2">Estrategias lingüísticas y emocionales para cuidar tu tiempo y tu energía.</p>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div onclick="openVideoModal('dQw4w9WgXcQ', 'El poder de las conversaciones pendientes')" class="reveal group cursor-pointer bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-all">
+                    <div class="relative aspect-video bg-forest-800 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent"></div>
+                        <div class="w-14 h-14 rounded-full bg-forest-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform z-10">
+                            <i data-lucide="play" class="w-6 h-6 fill-current ml-0.5"></i>
+                        </div>
+                        <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/60 text-xs font-medium">14:10</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs font-semibold text-forest-300 uppercase tracking-wider">Vínculos</span>
+                        <h3 class="text-lg font-bold mt-1 group-hover:text-forest-200 transition-colors">El poder de las conversaciones pendientes</h3>
+                        <p class="text-sm text-forest-100/70 mt-2">Lo que callamos no desaparece: aprende a diseñar el diálogo que vienes postergando.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         CALENDARIO INTERACTIVO DE SESIONES
+         ====================================================================== -->
+    <section id="calendario" class="py-20 bg-forest-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-forest-600">Reserva Directa</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-forest-900 mt-2">Calendario Interactivo de Sesiones</h2>
+                <p class="text-forest-900/70 mt-3">Elige el día y horario que mejor se adapte a tu rutina para tu sesión 1 a 1 con Oscar.</p>
+            </div>
+
+            <div class="reveal bg-white rounded-3xl p-5 sm:p-8 lg:p-10 shadow-botanical border border-forest-100">
+                <div class="grid lg:grid-cols-12 gap-8">
+                    <!-- Columna Izquierda: Calendario Mensual -->
+                    <div class="lg:col-span-6 space-y-5">
+                        <div class="flex items-center justify-between">
+                            <h3 id="calendar-month-year" class="text-xl font-bold text-forest-900 capitalize">Noviembre 2026</h3>
+                            <div class="flex items-center gap-2">
+                                <button id="prev-month" aria-label="Mes anterior" class="p-2 rounded-xl border border-forest-200 hover:bg-forest-50 text-forest-800 transition-colors">
+                                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                                </button>
+                                <button id="next-month" aria-label="Mes siguiente" class="p-2 rounded-xl border border-forest-200 hover:bg-forest-50 text-forest-800 transition-colors">
+                                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Días de la semana -->
+                        <div class="grid grid-cols-7 text-center text-xs font-bold text-forest-600 uppercase tracking-wider pb-1">
+                            <div>Dom</div><div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div>
+                        </div>
+
+                        <!-- Grilla de días -->
+                        <div id="calendar-grid" class="grid grid-cols-7 gap-1.5 sm:gap-2">
+                            <!-- Generado por JS -->
+                        </div>
+
+                        <div class="flex items-center gap-4 text-xs text-forest-900/65 pt-2">
+                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-forest-700 inline-block"></span> Seleccionado</span>
+                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full border border-forest-500 inline-block"></span> Hoy</span>
+                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-gray-200 inline-block"></span> No disponible</span>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Horarios y Confirmación -->
+                    <div class="lg:col-span-6 border-t lg:border-t-0 lg:border-l border-forest-100 pt-6 lg:pt-0 lg:pl-8 flex flex-col justify-between">
+                        <div id="booking-form-wrapper" class="space-y-5">
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider text-forest-600">Fecha seleccionada</p>
+                                <p id="selected-date-label" class="text-lg font-bold text-forest-900 mt-0.5">Selecciona un día disponible en el calendario</p>
+                            </div>
+
+                            <!-- Horarios -->
+                            <div>
+                                <label class="block text-sm font-semibold text-forest-900 mb-2.5">Horarios disponibles (Hora Local):</label>
+                                <div id="time-slots-grid" class="grid grid-cols-3 gap-2.5">
+                                    <button type="button" class="time-slot py-2.5 px-3 rounded-xl border border-forest-200 text-sm font-semibold text-forest-800 hover:bg-forest-50" data-time="09:00">09:00 hs</button>
+                                    <button type="button" class="time-slot py-2.5 px-3 rounded-xl border border-forest-200 text-sm font-semibold text-forest-800 hover:bg-forest-50" data-time="11:00">11:00 hs</button>
+                                    <button type="button" class="time-slot py-2.5 px-3 rounded-xl border border-forest-200 text-sm font-semibold text-forest-800 hover:bg-forest-50" data-time="15:00">15:00 hs</button>
+                                    <button type="button" class="time-slot py-2.5 px-3 rounded-xl border border-forest-200 text-sm font-semibold text-forest-800 hover:bg-forest-50" data-time="17:30">17:30 hs</button>
+                                    <button type="button" class="time-slot py-2.5 px-3 rounded-xl border border-forest-200 text-sm font-semibold text-forest-800 hover:bg-forest-50" data-time="19:00">19:00 hs</button>
+                                </div>
+                            </div>
+
+                            <!-- Datos del interesado -->
+                            <form id="booking-form" class="space-y-3 pt-2">
+                                <div class="grid sm:grid-cols-2 gap-3">
+                                    <input type="text" id="book-name" required placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-xl bg-forest-50/60 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                                    <input type="tel" id="book-phone" required placeholder="Tu WhatsApp / Teléfono" class="w-full px-4 py-3 rounded-xl bg-forest-50/60 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                                </div>
+                                <select id="book-modality" class="w-full px-4 py-3 rounded-xl bg-forest-50/60 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                                    <option value="Online (Zoom / Google Meet)">Modalidad: Online (Zoom / Google Meet)</option>
+                                    <option value="Presencial (Consultorio)">Modalidad: Presencial (Consultorio)</option>
+                                </select>
+                                <button type="submit" class="w-full bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2">
+                                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                    Confirmar Reserva de Turno
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Confirmación Exitosa -->
+                        <div id="booking-success" class="hidden text-center py-6 space-y-4">
+                            <div class="w-16 h-16 rounded-full bg-forest-100 text-forest-700 flex items-center justify-center mx-auto">
+                                <i data-lucide="calendar-check-2" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-forest-900">¡Turno Pre-Reservado!</h4>
+                            <p id="booking-summary-text" class="text-sm text-forest-900/75 leading-relaxed"></p>
+                            <div class="flex flex-col gap-2.5 pt-2">
+                                <a id="booking-whatsapp-link" href="#" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                                    Enviar Confirmación por WhatsApp
+                                </a>
+                                <button onclick="resetBooking()" class="text-sm font-medium text-forest-700 hover:underline py-2">
+                                    Agendar otro horario
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         TESTIMONIOS & PREGUNTAS FRECUENTES (FAQ)
+         ====================================================================== -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Testimonios -->
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-forest-600">Experiencias Reales</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-forest-900 mt-2">Lo que dicen quienes ya iniciaron su proceso</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-20">
+                <div class="reveal bg-cream border border-forest-100 rounded-3xl p-7 space-y-4">
+                    <div class="flex text-amber-500 gap-1">★★★★★</div>
+                    <p class="text-sm sm:text-base text-forest-900/80 italic leading-relaxed">
+                        "Llegué sintiendo que no podía con mi equipo de trabajo. En 6 sesiones con Oscar cambié por completo mi forma de comunicar y hoy disfrutamos trabajar juntos."
+                    </p>
+                    <div class="pt-2 border-t border-forest-100">
+                        <p class="font-bold text-forest-900 text-sm">Martín G.</p>
+                        <p class="text-xs text-forest-600">Gerente Comercial</p>
+                    </div>
+                </div>
+
+                <div class="reveal bg-cream border border-forest-100 rounded-3xl p-7 space-y-4">
+                    <div class="flex text-amber-500 gap-1">★★★★★</div>
+                    <p class="text-sm sm:text-base text-forest-900/80 italic leading-relaxed">
+                        "La calidez y claridad de Oscar me ayudaron a tomar la decisión de emprender mi propio proyecto tras años de postergarlo por miedo."
+                    </p>
+                    <div class="pt-2 border-t border-forest-100">
+                        <p class="font-bold text-forest-900 text-sm">Laura M.</p>
+                        <p class="text-xs text-forest-600">Arquitecta y Emprendedora</p>
+                    </div>
+                </div>
+
+                <div class="reveal bg-cream border border-forest-100 rounded-3xl p-7 space-y-4">
+                    <div class="flex text-amber-500 gap-1">★★★★★</div>
+                    <p class="text-sm sm:text-base text-forest-900/80 italic leading-relaxed">
+                        "El taller de conversaciones difíciles debería ser obligatorio. Me dio herramientas concretas que uso con mi pareja, mis hijos y mis socios."
+                    </p>
+                    <div class="pt-2 border-t border-forest-100">
+                        <p class="font-bold text-forest-900 text-sm">Federico R.</p>
+                        <p class="text-xs text-forest-600">Participante de Cursos Online</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preguntas Frecuentes -->
+            <div class="max-w-3xl mx-auto reveal">
+                <h3 class="text-2xl sm:text-3xl font-bold text-forest-900 text-center mb-8">Preguntas Frecuentes</h3>
+                <div class="space-y-3">
+                    <div class="faq-item bg-forest-50/60 border border-forest-100 rounded-2xl p-5 cursor-pointer" data-open="false">
+                        <div class="flex items-center justify-between gap-4">
+                            <h4 class="font-bold text-forest-900 text-base">¿En qué se diferencia el Coaching Ontológico de la psicología?</h4>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-forest-700 shrink-0"></i>
+                        </div>
+                        <div class="faq-content">
+                            <div class="faq-inner pt-3 text-sm text-forest-900/75 leading-relaxed">
+                                La psicología suele enfocarse en sanar el pasado y tratar patologías clínicas. El Coaching Ontológico parte de tu presente sano y se enfoca en el futuro: te acompaña a cuestionar tus creencias limitantes, ampliar tu capacidad de acción y alcanzar objetivos concretos.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-forest-50/60 border border-forest-100 rounded-2xl p-5 cursor-pointer" data-open="false">
+                        <div class="flex items-center justify-between gap-4">
+                            <h4 class="font-bold text-forest-900 text-base">¿Cuántas sesiones dura un proceso?</h4>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-forest-700 shrink-0"></i>
+                        </div>
+                        <div class="faq-content">
+                            <div class="faq-inner pt-3 text-sm text-forest-900/75 leading-relaxed">
+                                Cada proceso es único, pero en general un ciclo de trabajo enfocado en un objetivo concreto suele tomar entre 6 y 10 sesiones, con frecuencia semanal o quincenal.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-forest-50/60 border border-forest-100 rounded-2xl p-5 cursor-pointer" data-open="false">
+                        <div class="flex items-center justify-between gap-4">
+                            <h4 class="font-bold text-forest-900 text-base">¿Las sesiones online funcionan igual de bien que las presenciales?</h4>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-forest-700 shrink-0"></i>
+                        </div>
+                        <div class="faq-content">
+                            <div class="faq-inner pt-3 text-sm text-forest-900/75 leading-relaxed">
+                                ¡Sí! La modalidad online por Zoom o Google Meet permite mantener la misma profundidad, privacidad y cercanía desde la comodidad de tu casa u oficina, sin importar en qué ciudad o país te encuentres.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         CONTACTO, TELÉFONO Y SISTEMA DE MENSAJES INTERNOS
+         ====================================================================== -->
+    <section id="contacto" class="py-20 bg-forest-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 items-start">
+                <!-- Información Directa -->
+                <div class="lg:col-span-5 space-y-6 reveal">
+                    <span class="text-xs font-bold uppercase tracking-widest text-forest-600">Hablemos</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-forest-900">Contacto Directo</h2>
+                    <p class="text-forest-900/75 leading-relaxed">
+                        ¿Tienes dudas sobre una sesión, curso o taller para tu empresa? Escríbeme un mensaje interno o contáctame directamente por teléfono o WhatsApp.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <a href="tel:+5491100000000" class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-forest-100 hover:border-forest-300 transition-all shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-forest-600 uppercase">Teléfono Directo</p>
+                                <p class="text-base font-bold text-forest-900">+54 9 11 0000-0000</p>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/5491100000000?text=Hola%20Oscar,%20me%20gustar%C3%ADa%20consultar%20sobre%20tus%20sesiones%20de%20coaching." target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-forest-100 hover:border-forest-300 transition-all shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-[#25D366]/15 text-[#128C7E] flex items-center justify-center shrink-0">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-forest-600 uppercase">WhatsApp</p>
+                                <p class="text-base font-bold text-forest-900">Chatear ahora con Oscar</p>
+                            </div>
+                        </a>
+
+                        <a href="mailto:contacto@oscarbenitezcoach.com" class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-forest-100 hover:border-forest-300 transition-all shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-forest-600 uppercase">Correo Electrónico</p>
+                                <p class="text-base font-bold text-forest-900 break-all">contacto@oscarbenitezcoach.com</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Buzón de Mensajes Internos -->
+                <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 shadow-botanical border border-forest-100 reveal">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-forest-100">
+                        <div>
+                            <h3 class="text-xl font-bold text-forest-900">Mensajes Internos</h3>
+                            <p class="text-xs text-forest-900/65">Tu consulta queda registrada en el buzón privado de Oscar</p>
+                        </div>
+                        <button id="toggle-inbox-btn" type="button" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-forest-50 hover:bg-forest-100 text-forest-800 text-xs font-semibold transition-colors">
+                            <i data-lucide="inbox" class="w-4 h-4"></i>
+                            Ver Buzón (<span id="inbox-count">0</span>)
+                        </button>
+                    </div>
+
+                    <!-- Formulario de Envío -->
+                    <form id="internal-message-form" class="space-y-4">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-forest-800 mb-1.5">Nombre</label>
+                                <input type="text" id="msg-name" required placeholder="Ej: Lucía Fernández" class="w-full px-4 py-3 rounded-xl bg-forest-50/50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-forest-800 mb-1.5">WhatsApp o Email</label>
+                                <input type="text" id="msg-contact" required placeholder="Para responderte" class="w-full px-4 py-3 rounded-xl bg-forest-50/50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-forest-800 mb-1.5">Motivo de consulta</label>
+                            <select id="msg-topic" class="w-full px-4 py-3 rounded-xl bg-forest-50/50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                                <option value="Sesión 1 a 1">Sesión 1 a 1</option>
+                                <option value="Curso Online">Inscripción a Curso Online</option>
+                                <option value="Evento / Taller">Consulta sobre Evento / Taller</option>
+                                <option value="Coaching Empresas">Propuesta para Empresa / Equipo</option>
+                                <option value="Otro">Otra consulta</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-forest-800 mb-1.5">Tu mensaje para Oscar</label>
+                            <textarea id="msg-body" rows="4" required placeholder="Cuéntame brevemente en qué te gustaría trabajar..." class="w-full px-4 py-3 rounded-xl bg-forest-50/50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500 resize-none"></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button type="submit" class="flex-1 bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                Enviar Mensaje Interno
+                            </button>
+                        </div>
+                        <p id="msg-feedback" class="hidden text-sm font-medium text-forest-700 bg-forest-100 px-4 py-3 rounded-xl"></p>
+                    </form>
+
+                    <!-- Vista del Buzón Interno (Para demostración / gestión) -->
+                    <div id="inbox-panel" class="hidden space-y-4">
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm font-bold text-forest-900">Mensajes recibidos en este navegador</p>
+                            <button id="back-to-form-btn" type="button" class="text-xs font-semibold text-forest-700 hover:underline">← Escribir nuevo mensaje</button>
+                        </div>
+                        <div id="inbox-list" class="space-y-3 max-h-80 overflow-y-auto pr-1">
+                            <!-- Generado por JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         FOOTER
+         ====================================================================== -->
+    <footer class="bg-forest-900 text-forest-100 py-12 border-t border-forest-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="text-center md:text-left">
+                    <span class="font-serif text-xl font-bold text-white">Oscar Benítez</span>
+                    <p class="text-xs text-forest-300 mt-1">Coach Ontológico Profesional • Acompañamiento Personal y Ejecutivo</p>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="https://www.youtube.com" target="_blank" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                        <i data-lucide="youtube" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-forest-800 text-center text-xs text-forest-300/70">
+                © 2026 Oscar Benítez — Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================================================================
+         BOTÓN FLOTANTE DE WHATSAPP
+         ====================================================================== -->
+    <a href="https://wa.me/5491100000000?text=Hola%20Oscar,%20te%20contacto%20desde%20tu%20p%C3%A1gina%20web." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" class="whatsapp-pulse fixed bottom-5 right-5 z-40 w-14 h-14 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-110">
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+    </a>
+
+    <!-- ======================================================================
+         MODALES (VIDEO YOUTUBE / TEMARIO CURSO / RESERVA EVENTO)
+         ====================================================================== -->
+    <!-- Modal Video -->
+    <div id="video-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-forest-950 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-white/10">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+                <h4 id="video-modal-title" class="font-bold text-white text-base sm:text-lg truncate pr-4">Video</h4>
+                <button onclick="closeVideoModal()" class="text-white/70 hover:text-white p-1">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="aspect-video bg-black">
+                <iframe id="video-iframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Temario de Curso -->
+    <div id="course-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-start justify-between gap-4 mb-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-forest-600">Programa del Curso</span>
+                    <h4 id="course-modal-title" class="text-2xl font-bold text-forest-900 mt-1"></h4>
+                </div>
+                <button onclick="closeCourseModal()" class="text-forest-800/60 hover:text-forest-900 p-1">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <ul id="course-modal-list" class="space-y-2.5 text-sm text-forest-900/80 mb-6"></ul>
+            <div class="flex items-center justify-between pt-4 border-t border-forest-100">
+                <div>
+                    <span class="text-xs text-forest-600 block">Inversión</span>
+                    <span id="course-modal-price" class="text-xl font-bold text-forest-900"></span>
+                </div>
+                <button id="course-modal-cta" class="bg-forest-700 hover:bg-forest-800 text-white font-semibold px-6 py-3 rounded-xl transition-colors">
+                    Quiero Inscribirme
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Reserva de Evento -->
+    <div id="event-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-start justify-between gap-4 mb-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-forest-600">Reserva de Cupo</span>
+                    <h4 id="event-modal-title" class="text-xl font-bold text-forest-900 mt-1"></h4>
+                </div>
+                <button onclick="closeEventModal()" class="text-forest-800/60 hover:text-forest-900 p-1">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <form id="event-register-form" class="space-y-3.5">
+                <input type="text" id="ev-name" required placeholder="Tu nombre completo" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                <input type="email" id="ev-email" required placeholder="Tu correo electrónico" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                <input type="tel" id="ev-phone" required placeholder="Tu WhatsApp" class="w-full px-4 py-3 rounded-xl bg-forest-50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                <button type="submit" class="w-full bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl transition-colors">
+                    Confirmar mi Asistencia
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

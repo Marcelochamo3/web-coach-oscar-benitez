@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Estilos personalizados - Oscar Benítez | Coach Ontológico
+   Paleta: Verdes Botánicos / Salvia / Bosque + Crema Orgánico
+   ========================================================================== */
+
+:root {
+    --green-forest: #1B4332;
+    --green-botanical: #2D6A4F;
+    --green-sage: #40916C;
+    --green-leaf: #52B788;
+    --green-mint: #D8F3DC;
+    --green-wash: #F1F7F4;
+    --cream-bg: #FAFBF9;
+    --text-dark: #16221D;
+    --text-muted: #4A5D54;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--cream-bg);
+    color: var(--text-dark);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .font-serif-editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Glassmorphism suave para el header */
+.navbar-glass {
+    background: rgba(250, 251, 249, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+}
+
+/* Sombra orgánica suave */
+.shadow-botanical {
+    box-shadow: 0 12px 32px -8px rgba(27, 67, 50, 0.08), 0 4px 12px -4px rgba(27, 67, 50, 0.04);
+}
+
+.shadow-botanical-lg {
+    box-shadow: 0 24px 48px -12px rgba(27, 67, 50, 0.14);
+}
+
+/* Fondo decorativo sutil */
+.hero-gradient {
+    background: radial-gradient(circle at 85% 20%, rgba(216, 243, 220, 0.65) 0%, rgba(250, 251, 249, 0) 50%),
+                radial-gradient(circle at 10% 80%, rgba(82, 183, 136, 0.12) 0%, rgba(250, 251, 249, 0) 45%);
+}
+
+/* Animación de aparición suave al hacer scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Acordeón FAQ */
+.faq-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.32s ease;
+}
+
+.faq-item[data-open="true"] .faq-content {
+    grid-template-rows: 1fr;
+}
+
+.faq-inner {
+    overflow: hidden;
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+
+.faq-item[data-open="true"] .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* Calendario interactivo */
+.calendar-day {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.18s ease;
+    cursor: pointer;
+}
+
+.calendar-day.disabled {
+    color: #B7C4BE;
+    cursor: not-allowed;
+    background: transparent;
+}
+
+.calendar-day.available:hover {
+    background-color: var(--green-mint);
+    color: var(--green-forest);
+}
+
+.calendar-day.selected {
+    background-color: var(--green-botanical) !important;
+    color: #FFFFFF !important;
+    font-weight: 700;
+    box-shadow: 0 6px 14px rgba(45, 106, 79, 0.28);
+}
+
+.calendar-day.today:not(.selected) {
+    border: 1.5px solid var(--green-sage);
+    color: var(--green-botanical);
+    font-weight: 700;
+}
+
+/* Botón de horario */
+.time-slot {
+    transition: all 0.18s ease;
+}
+
+.time-slot.selected {
+    background-color: var(--green-botanical);
+    color: #FFFFFF;
+    border-color: var(--green-botanical);
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.22);
+}
+
+/* Ocultar scrollbar en tabs horizontales móviles */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Pulso sutil para botón WhatsApp */
+@keyframes pulse-soft {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
+    }
+    50% {
+        box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+    }
+}
+
+.whatsapp-pulse {
+    animation: pulse-soft 2.6s infinite;
+}
+
