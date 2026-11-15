@@ -562,7 +562,7 @@ window.closeVideoModal = function() {
 };
 
 function getCoursePricing() {
-    return currentCountry.hispanic
+    return currentCountry.code === 'ar'
         ? { original: '$150.000 ARS', final: '$75.000 ARS' }
         : { original: '$100 USD', final: '$50 USD' };
 }
