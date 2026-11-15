@@ -561,6 +561,12 @@ window.closeVideoModal = function() {
     modal.classList.add('hidden');
 };
 
+function getCoursePricing() {
+    return currentCountry.hispanic
+        ? { original: '$150.000 ARS', final: '$75.000 ARS' }
+        : { original: '$100 USD', final: '$50 USD' };
+}
+
 window.openCourseByKey = function(courseKey, price) {
     const dict = getDict(currentCountry.lang);
     const title = dict[`${courseKey}_title`] || courseKey;
@@ -569,13 +575,17 @@ window.openCourseByKey = function(courseKey, price) {
     if (currentCountry.hispanic && modules.length > 0) {
         modules[modules.length - 1] = `${modules[modules.length - 1]} + 1 Sesión 1 a 1 GRATIS`;
     }
-    openCourseModal(title, modules, price);
+    const pricing = getCoursePricing();
+    const origEl = document.getElementById('course-modal-original-price');
+    if (origEl) origEl.textContent = pricing.original;
+    openCourseModal(title, modules, pricing.final || price);
 };
 
 window.openBuyCourseByKey = function(courseKey, price) {
     const dict = getDict(currentCountry.lang);
     const title = dict[`${courseKey}_title`] || courseKey;
-    openBuyCourseModal(title, price);
+    const pricing = getCoursePricing();
+    openBuyCourseModal(title, pricing.final || price);
 };
 
 let courseTimerInterval = null;
