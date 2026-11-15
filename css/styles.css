@@ -24,7 +24,7 @@ body {
     background-color: var(--cream-bg);
     color: var(--text-dark);
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 h1,
