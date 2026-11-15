@@ -161,3 +161,12 @@ h1, h2, h3, .font-serif-editorial {
     animation: pulse-soft 2.6s infinite;
 }
 
+/* Visibilidad por modo de país (evita conflictos con flex / sm:inline-flex de Tailwind) */
+body.mode-intl .hispanic-only {
+    display: none !important;
+}
+
+body:not(.mode-intl) .intl-only {
+    display: none !important;
+}
+

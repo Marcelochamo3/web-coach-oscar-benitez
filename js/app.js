@@ -66,9 +66,10 @@ function initCountrySelector() {
     }
 
     btn.addEventListener('click', (e) => {
+        e.preventDefault();
         e.stopPropagation();
         const isOpen = !dropdown.classList.contains('hidden');
-        dropdown.classList.toggle('hidden');
+        dropdown.classList.toggle('hidden', isOpen);
         btn.setAttribute('aria-expanded', String(!isOpen));
         if (!isOpen && searchInput) {
             searchInput.value = '';
@@ -117,13 +118,8 @@ function applyCountryMode(country) {
         nameEl.textContent = country.name;
     }
 
-    // Mostrar u ocultar secciones de comunicación / clases en vivo
-    document.querySelectorAll('.hispanic-only').forEach(el => {
-        el.classList.toggle('hidden', !country.hispanic);
-    });
-    document.querySelectorAll('.intl-only').forEach(el => {
-        el.classList.toggle('hidden', country.hispanic);
-    });
+    // Mostrar u ocultar secciones de comunicación / clases en vivo via clase en body
+    document.body.classList.toggle('mode-intl', !country.hispanic);
 
     const buyPhone = document.getElementById('buy-phone');
     if (buyPhone) {
