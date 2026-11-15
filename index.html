@@ -492,9 +492,15 @@
                     <h2 data-i18n="courses_title" class="text-3xl sm:text-4xl font-bold text-forest-900 mt-2">Cursos Online</h2>
                     <p class="text-forest-900/70 mt-2 max-w-xl"><span data-i18n="courses_desc">Accede al instante a las clases en video y guías PDF descargables.</span> <strong data-i18n="courses_desc_gift" class="hispanic-only">Con la compra de cualquier curso, incluye 1 sesión 1 a 1 GRATIS con Oscar.</strong></p>
                 </div>
-                <span class="hispanic-only inline-flex items-center gap-2 text-sm font-semibold text-forest-800 bg-forest-100 px-4 py-2.5 rounded-full border border-forest-200 self-start">
-                    <i data-lucide="gift" class="w-4 h-4 text-forest-700"></i> <span data-i18n="courses_gift_pill">Incluye Sesión 1 a 1 Gratis</span>
-                </span>
+                <div class="flex flex-wrap items-center gap-2.5 self-start">
+                    <span class="hispanic-only inline-flex items-center gap-2 text-sm font-semibold text-forest-800 bg-forest-100 px-4 py-2.5 rounded-full border border-forest-200">
+                        <i data-lucide="gift" class="w-4 h-4 text-forest-700"></i> <span data-i18n="courses_gift_pill">Incluye Sesión 1 a 1 Gratis</span>
+                    </span>
+                    <a href="campus.html" class="inline-flex items-center gap-2 text-sm font-semibold text-white bg-forest-700 hover:bg-forest-800 px-4 py-2.5 rounded-full shadow-sm transition-all">
+                        <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                        <span>Campus Alumnos</span>
+                    </a>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 lg:gap-8 reveal-stagger">
@@ -599,6 +605,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Botón MODELO DE CAMPUS (acceso directo sin usuario ni contraseña para probar) -->
+            <div class="mt-10 text-center reveal">
+                <a href="campus.html?demo=1" class="inline-flex items-center justify-center gap-2.5 bg-forest-800 hover:bg-forest-900 text-white text-sm sm:text-base font-bold tracking-wide px-7 py-4 rounded-2xl shadow-botanical hover:shadow-botanical-lg transition-all active:scale-95">
+                    <i data-lucide="monitor-play" class="w-5 h-5 text-forest-200"></i>
+                    <span>MODELO DE CAMPUS</span>
+                </a>
+                <p class="text-xs text-forest-900/65 mt-2.5">Ingresa sin usuario ni contraseña para ver y probar los módulos, PDFs, cuestionarios y certificado QR.</p>
             </div>
         </div>
     </section>

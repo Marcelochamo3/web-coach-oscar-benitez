@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1B4332">
+    <title>Campus Virtual | Oscar Benítez</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            DEFAULT: '#1B4332',
+                            50: '#F1F7F4',
+                            100: '#D8F3DC',
+                            200: '#B7E4C7',
+                            300: '#95D5B2',
+                            400: '#74C69D',
+                            500: '#52B788',
+                            600: '#40916C',
+                            700: '#2D6A4F',
+                            800: '#1B4332',
+                            900: '#0F291E',
+                        },
+                        cream: '#FAFBF9',
+                        earth: '#C8A97E',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- QRCode generator -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css?v=2.4">
+    <style>
+        @media print {
+            body * { visibility: hidden; }
+            #certificate-printable, #certificate-printable * { visibility: visible; }
+            #certificate-printable {
+                position: fixed;
+                inset: 0;
+                margin: 0;
+                width: 100%;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-cream text-forest-900 antialiased min-h-screen flex flex-col">
+
+    <!-- ======================================================================
+         NAVBAR DEL CAMPUS
+         ====================================================================== -->
+    <header class="navbar-glass sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-6">
+                    <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+                        <div class="w-9 h-9 rounded-xl bg-forest-800 text-white flex items-center justify-center font-serif font-bold text-base shadow-sm">
+                            OB
+                        </div>
+                        <div>
+                            <span class="block font-serif font-bold text-sm sm:text-base text-forest-900 leading-tight">Oscar Benítez</span>
+                            <span class="block text-[10px] font-semibold tracking-wider uppercase text-forest-600">Campus Virtual</span>
+                        </div>
+                    </a>
+
+                    <nav id="campus-nav" class="hidden md:flex items-center gap-1 text-sm font-medium">
+                        <a href="index.html" class="px-3 py-2 rounded-lg text-forest-800/75 hover:text-forest-900 hover:bg-forest-50 transition-colors">Página Principal</a>
+                        <button type="button" onclick="showCoursesOverview()" id="nav-btn-courses" class="px-3 py-2 rounded-lg text-forest-900 bg-forest-100/70 font-semibold transition-colors">Mis Cursos</button>
+                    </nav>
+                </div>
+
+                <!-- Usuario logueado -->
+                <div id="user-menu" class="hidden flex items-center gap-3">
+                    <div class="hidden sm:block text-right">
+                        <p id="header-user-name" class="text-xs font-bold text-forest-900"></p>
+                        <p id="header-user-email" class="text-[11px] text-forest-600"></p>
+                    </div>
+                    <div id="header-user-avatar" class="w-9 h-9 rounded-full bg-forest-700 text-white font-bold text-xs flex items-center justify-center uppercase">
+                        OB
+                    </div>
+                    <button type="button" onclick="logoutCampus()" title="Cerrar sesión" class="p-2 rounded-xl text-forest-700 hover:bg-forest-100 transition-colors">
+                        <i data-lucide="log-out" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======================================================================
+         1. PANTALLA DE LOGIN / INGRESO AL CAMPUS
+         ====================================================================== -->
+    <main id="login-view" class="flex-1 flex items-center justify-center px-4 py-12">
+        <div class="max-w-md w-full bg-white rounded-3xl p-7 sm:p-9 shadow-botanical-lg border border-forest-100 space-y-6">
+            <div class="text-center space-y-2">
+                <div class="w-14 h-14 rounded-2xl bg-forest-800 text-white font-serif font-bold text-xl flex items-center justify-center mx-auto shadow-sm">
+                    OB
+                </div>
+                <h1 class="text-2xl font-bold text-forest-900">Ingreso al Campus Virtual</h1>
+                <p class="text-sm text-forest-900/70">Accede a tus cursos, materiales en PDF, videos, exámenes y certificado oficial con QR.</p>
+            </div>
+
+            <form id="campus-login-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-forest-800 mb-1.5">Tu Nombre Completo (figurará en tu certificado)</label>
+                    <input type="text" id="login-name" required placeholder="Ej: Marcelo Horacio" class="w-full px-4 py-3 rounded-xl bg-forest-50/50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-forest-800 mb-1.5">Email de compra</label>
+                    <input type="email" id="login-email" required placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl bg-forest-50/50 border border-forest-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500">
+                </div>
+                <button type="submit" class="w-full bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3.5 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="log-in" class="w-4 h-4"></i>
+                    Ingresar a Mis Cursos
+                </button>
+            </form>
+
+            <button type="button" onclick="enterDemoCampus()" class="w-full bg-forest-50 hover:bg-forest-100 text-forest-800 border border-forest-200 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm">
+                <i data-lucide="monitor-play" class="w-4 h-4 text-forest-700"></i>
+                Entrar al MODELO DE CAMPUS (Sin contraseña)
+            </button>
+
+            <div class="bg-forest-50 border border-forest-100 rounded-2xl p-3.5 text-xs text-forest-800/80 leading-relaxed">
+                <strong>Modo Demo Activo:</strong> Al ingresar con tu nombre y correo podrás probar los módulos completos, videos, lectura PDF, examen y descarga del certificado con QR verificable.
+            </div>
+        </div>
+    </main>
+
+    <!-- ======================================================================
+         2. VISTA GENERAL DE CURSOS ("¡Hola, [Nombre]! — Mis Cursos")
+         ====================================================================== -->
+    <main id="overview-view" class="hidden flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
+        <div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-forest-900">
+                ¡Hola, <span id="welcome-user-name" class="text-forest-700">Alumno</span>!
+            </h1>
+            <p class="text-sm text-forest-900/70 mt-1">Selecciona un curso para continuar con tus clases, lecturas PDF y evaluaciones.</p>
+        </div>
+
+        <section class="bg-white rounded-3xl border border-forest-100 shadow-botanical p-6 sm:p-8 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-forest-100">
+                <h2 class="text-lg font-bold text-forest-900">Vista general de curso</h2>
+                <div class="relative w-full sm:w-64">
+                    <i data-lucide="search" class="w-4 h-4 text-forest-500 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                    <input type="text" id="course-search-input" placeholder="Buscar curso..." class="w-full pl-9 pr-3 py-2 text-sm bg-forest-50/50 border border-forest-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-forest-500">
+                </div>
+            </div>
+
+            <div id="campus-courses-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Generado dinámicamente por js/campus.js -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================
+         3. VISTA DEL AULA DEL CURSO (MENÚ LATERAL + MÓDULOS + EXAMEN + CERT)
+         ====================================================================== -->
+    <main id="course-view" class="hidden flex-1 flex flex-col">
+        <!-- Barra superior del curso -->
+        <div class="bg-forest-800 text-white border-b border-forest-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3 min-w-0">
+                    <button type="button" onclick="showCoursesOverview()" class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors shrink-0">
+                        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                        Mis Cursos
+                    </button>
+                    <h2 id="active-course-title" class="font-serif font-bold text-sm sm:text-lg truncate">Curso</h2>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                    <div class="hidden sm:flex items-center gap-2 text-xs">
+                        <span class="text-forest-200">Progreso:</span>
+                        <span id="active-course-progress-text" class="font-bold">0%</span>
+                    </div>
+                    <button type="button" id="btn-open-certificate" onclick="openCertificateModal()" class="hidden items-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-amber-950 text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition-all">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                        Ver Certificado QR
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl w-full mx-auto flex-1 grid lg:grid-cols-12 gap-6 px-4 sm:px-6 lg:px-8 py-6">
+            <!-- Sidebar de Módulos -->
+            <aside class="lg:col-span-4 xl:col-span-3 space-y-2">
+                <div class="bg-white rounded-2xl border border-forest-100 p-4 shadow-sm">
+                    <p class="text-xs font-bold uppercase tracking-wider text-forest-600 mb-3">Contenido del Curso</p>
+                    <div id="course-sidebar-list" class="space-y-1.5">
+                        <!-- Generado dinámicamente -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Contenido Principal del Módulo Activo -->
+            <section class="lg:col-span-8 xl:col-span-9 space-y-6">
+                <div id="module-content-area" class="bg-white rounded-3xl border border-forest-100 p-6 sm:p-8 shadow-botanical space-y-6">
+                    <!-- Generado dinámicamente -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ======================================================================
+         MODAL DE CERTIFICADO OFICIAL CON QR VERIFICABLE
+         ====================================================================== -->
+    <div id="certificate-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="max-w-3xl w-full space-y-4 my-8">
+            <div class="no-print flex items-center justify-between text-white px-2">
+                <span class="text-sm font-semibold">Certificado Oficial de Aprobación</span>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="window.print()" class="inline-flex items-center gap-2 bg-forest-600 hover:bg-forest-500 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition-colors">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        Descargar / Imprimir PDF
+                    </button>
+                    <button type="button" onclick="closeCertificateModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Certificado Imprimible -->
+            <div id="certificate-printable" class="bg-white rounded-3xl p-8 sm:p-12 border-8 border-forest-800 shadow-2xl relative overflow-hidden text-center space-y-6">
+                <div class="border border-earth/50 rounded-2xl p-6 sm:p-10 space-y-6">
+                    <div class="flex items-center justify-center gap-3">
+                        <div class="w-11 h-11 rounded-xl bg-forest-800 text-white flex items-center justify-center font-serif font-bold text-lg">OB</div>
+                        <div class="text-left">
+                            <p class="font-serif font-bold text-forest-900 leading-tight">Oscar Benítez</p>
+                            <p class="text-[11px] uppercase tracking-widest text-forest-600 font-semibold">Coaching Ontológico Profesional</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <p class="text-xs font-bold uppercase tracking-[0.25em] text-earth">Certificado de Aprobación</p>
+                        <p class="text-sm text-forest-900/70">Se otorga el presente reconocimiento a</p>
+                        <h3 id="cert-student-name" class="font-serif text-3xl sm:text-4xl font-bold text-forest-900 pt-1">Nombre del Alumno</h3>
+                    </div>
+
+                    <p class="text-sm sm:text-base text-forest-900/80 max-w-xl mx-auto leading-relaxed">
+                        Por haber completado satisfactoriamente todas las clases, lecturas y evaluaciones del programa de formación:
+                    </p>
+
+                    <h4 id="cert-course-title" class="font-serif text-xl sm:text-2xl font-bold text-forest-700">Nombre del Curso</h4>
+
+                    <div class="grid sm:grid-cols-3 gap-6 items-center pt-6 border-t border-forest-100">
+                        <div class="text-center sm:text-left space-y-1">
+                            <p class="text-xs text-forest-600 uppercase font-semibold">Fecha de Emisión</p>
+                            <p id="cert-date" class="text-sm font-bold text-forest-900"></p>
+                            <p class="text-[11px] text-forest-700 font-mono">ID: <span id="cert-code"></span></p>
+                        </div>
+
+                        <div class="text-center space-y-1">
+                            <p class="font-serif italic text-xl text-forest-800">Oscar Benítez</p>
+                            <div class="w-36 h-px bg-forest-300 mx-auto"></div>
+                            <p class="text-[11px] text-forest-600 font-semibold uppercase">Coach Ontológico • Director</p>
+                        </div>
+
+                        <div class="flex flex-col items-center sm:items-end gap-1.5">
+                            <div id="cert-qr-box" class="p-2 bg-white border border-forest-200 rounded-xl inline-block"></div>
+                            <span class="text-[10px] text-forest-700 font-medium">Escanea para validar autenticidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/campus.js?v=1.1"></script>
+</body>
+</html>
