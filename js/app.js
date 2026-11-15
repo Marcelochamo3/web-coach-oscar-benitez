@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountrySelector();
     initMobileMenu();
     initScrollReveal();
+    initCountUp();
     initFAQ();
     initQuiz();
     initEventFilters();
@@ -175,13 +176,95 @@ function initScrollReveal() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
+                const el = entry.target;
+                const parent = el.parentElement;
+                if (parent && parent.classList.contains('reveal-stagger')) {
+                    const siblings = Array.from(parent.children).filter(c => c.classList.contains('reveal'));
+                    const idx = siblings.indexOf(el);
+                    if (idx > 0) {
+                        el.style.transitionDelay = `${idx * 90}ms`;
+                    }
+                }
+                el.classList.add('active');
+                setTimeout(() => {
+                    el.style.transitionDelay = '';
+                }, 950);
+                observer.unobserve(el);
             }
         });
     }, { threshold: 0.12 });
 
     reveals.forEach(el => observer.observe(el));
+}
+
+/* --------------------------------------------------------------------------
+   2B. CONTADORES ANIMADOS DESDE CERO
+   -------------------------------------------------------------------------- */
+function initCountUp() {
+    const counters = document.querySelectorAll('.count-up');
+    if (!counters.length) return;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function formatCounter(el, value) {
+        const prefix = el.getAttribute('data-prefix') || '';
+        const suffix = el.getAttribute('data-suffix') || '';
+        return `${prefix}${value}${suffix}`;
+    }
+
+    function animateCounter(el) {
+        if (el.dataset.counted === 'true') return;
+        el.dataset.counted = 'true';
+
+        const target = parseInt(el.getAttribute('data-target') || '0', 10);
+        const duration = parseInt(el.getAttribute('data-duration') || '1400', 10);
+
+        if (prefersReduced || target <= 0) {
+            el.textContent = formatCounter(el, target);
+            return;
+        }
+
+        const startTime = performance.now();
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease-out cúbico suave
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = formatCounter(el, current);
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                el.textContent = formatCounter(el, target);
+            }
+        }
+
+        el.textContent = formatCounter(el, 0);
+        requestAnimationFrame(step);
+    }
+
+    // Inicializar en 0 antes de que entren en pantalla
+    counters.forEach(el => {
+        el.textContent = formatCounter(el, 0);
+    });
+
+    if (!('IntersectionObserver' in window)) {
+        counters.forEach(animateCounter);
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.25 });
+
+    counters.forEach(el => observer.observe(el));
 }
 
 /* --------------------------------------------------------------------------

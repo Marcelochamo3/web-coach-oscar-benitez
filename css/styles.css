@@ -27,7 +27,10 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, .font-serif-editorial {
+h1,
+h2,
+h3,
+.font-serif-editorial {
     font-family: 'Playfair Display', Georgia, serif;
 }
 
@@ -51,19 +54,153 @@ h1, h2, h3, .font-serif-editorial {
 /* Fondo decorativo sutil */
 .hero-gradient {
     background: radial-gradient(circle at 85% 20%, rgba(216, 243, 220, 0.65) 0%, rgba(250, 251, 249, 0) 50%),
-                radial-gradient(circle at 10% 80%, rgba(82, 183, 136, 0.12) 0%, rgba(250, 251, 249, 0) 45%);
+        radial-gradient(circle at 10% 80%, rgba(82, 183, 136, 0.12) 0%, rgba(250, 251, 249, 0) 45%);
 }
 
 /* Animación de aparición suave al hacer scroll */
 .reveal {
     opacity: 0;
-    transform: translateY(22px);
-    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(18px);
+    transition: opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.68s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Micro-interacciones discretas para tarjetas */
+.card-elevate {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+    will-change: transform;
+}
+
+.card-elevate:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 38px -10px rgba(27, 67, 50, 0.11), 0 6px 14px -4px rgba(27, 67, 50, 0.05);
+}
+
+.card-elevate-dark {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+    will-change: transform;
+}
+
+.card-elevate-dark:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 44px -12px rgba(9, 25, 18, 0.45);
+}
+
+.card-icon-box {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.3s ease;
+}
+
+.group:hover .card-icon-box {
+    transform: scale(1.06) translateY(-1px);
+}
+
+/* Destello sutil diagonal en tarjetas destacadas */
+.card-sheen {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.09) 48%,
+            transparent 66%);
+    transform: translateX(-110%);
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.card-sheen:hover::after {
+    transform: translateX(110%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .reveal,
+    .card-elevate,
+    .card-elevate-dark,
+    .card-icon-box,
+    .card-sheen::after,
+    .marquee-track {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .reveal {
+        opacity: 1 !important;
+    }
+}
+
+/* Carrusel infinito de marcas (izquierda a derecha) */
+.marquee-wrapper {
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-ltr 26s linear infinite;
+    will-change: transform;
+}
+
+.marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee-group {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+    padding-right: 2.25rem;
+}
+
+.brand-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.75rem;
+    background: #FFFFFF;
+    border: 1px solid rgba(45, 106, 79, 0.1);
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px -6px rgba(27, 67, 50, 0.06);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.brand-logo-item:hover {
+    transform: translateY(-2px) scale(1.03);
+    border-color: rgba(45, 106, 79, 0.28);
+    box-shadow: 0 10px 24px -8px rgba(27, 67, 50, 0.12);
+}
+
+@keyframes marquee-ltr {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 /* Acordeón FAQ */
@@ -142,6 +279,7 @@ h1, h2, h3, .font-serif-editorial {
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
+
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -149,9 +287,12 @@ h1, h2, h3, .font-serif-editorial {
 
 /* Pulso sutil para botón WhatsApp */
 @keyframes pulse-soft {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
     }
+
     50% {
         box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
     }
@@ -169,4 +310,3 @@ body.mode-intl .hispanic-only {
 body:not(.mode-intl) .intl-only {
     display: none !important;
 }
-
