@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
+    initCountrySelector();
     initMobileMenu();
     initScrollReveal();
     initFAQ();
@@ -16,6 +17,133 @@ document.addEventListener('DOMContentLoaded', () => {
     initCalendar();
     initInternalMessages();
 });
+
+/* --------------------------------------------------------------------------
+   0. SELECTOR DE PAÍS E IDIOMA (SIEMPRE INICIA EN ARGENTINA)
+   -------------------------------------------------------------------------- */
+let currentCountry = { code: 'ar', name: 'Argentina', lang: 'es', hispanic: true };
+
+function initCountrySelector() {
+    const btn = document.getElementById('country-selector-btn');
+    const dropdown = document.getElementById('country-dropdown');
+    const searchInput = document.getElementById('country-search');
+    const listEl = document.getElementById('country-list');
+
+    if (!btn || !dropdown || !listEl || !window.COUNTRIES) return;
+
+    function renderList(filter = '') {
+        const term = filter.trim().toLowerCase();
+        const filtered = window.COUNTRIES.filter(c =>
+            c.name.toLowerCase().includes(term)
+        );
+
+        listEl.innerHTML = filtered.map(c => {
+            const isActive = c.code === currentCountry.code;
+            return `
+                <li>
+                    <button type="button" data-code="${c.code}" class="country-option w-full flex items-center justify-between px-3.5 py-2.5 text-left text-sm hover:bg-forest-50 transition-colors ${isActive ? 'bg-forest-50 font-bold text-forest-800' : 'text-forest-900'}">
+                        <span class="flex items-center gap-3">
+                            <img src="https://flagcdn.com/w40/${c.code}.png" alt="${c.name}" class="w-5 h-3.5 object-cover rounded-[3px] shadow-xs shrink-0">
+                            <span>${c.name}</span>
+                        </span>
+                        ${isActive ? '<span class="w-2 h-2 rounded-full bg-forest-600"></span>' : ''}
+                    </button>
+                </li>
+            `;
+        }).join('');
+
+        listEl.querySelectorAll('.country-option').forEach(optBtn => {
+            optBtn.addEventListener('click', () => {
+                const selected = window.COUNTRIES.find(c => c.code === optBtn.dataset.code);
+                if (selected) {
+                    applyCountryMode(selected);
+                    dropdown.classList.add('hidden');
+                    btn.setAttribute('aria-expanded', 'false');
+                    renderList(searchInput ? searchInput.value : '');
+                }
+            });
+        });
+    }
+
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !dropdown.classList.contains('hidden');
+        dropdown.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        if (!isOpen && searchInput) {
+            searchInput.value = '';
+            renderList('');
+            setTimeout(() => searchInput.focus(), 50);
+        }
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener('input', () => renderList(searchInput.value));
+        searchInput.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
+            dropdown.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Siempre iniciar con Argentina por defecto
+    const argentina = window.COUNTRIES.find(c => c.code === 'ar') || window.COUNTRIES[0];
+    applyCountryMode(argentina);
+    renderList('');
+}
+
+function getDict(lang) {
+    const base = (window.TRANSLATIONS && window.TRANSLATIONS.es) || {};
+    const target = (window.TRANSLATIONS && window.TRANSLATIONS[lang]) || {};
+    return { ...base, ...target };
+}
+
+function applyCountryMode(country) {
+    currentCountry = country;
+    const dict = getDict(country.lang);
+
+    document.documentElement.lang = country.lang;
+
+    const flagEl = document.getElementById('current-country-flag');
+    const nameEl = document.getElementById('current-country-name');
+    if (flagEl) {
+        flagEl.src = `https://flagcdn.com/w40/${country.code}.png`;
+        flagEl.alt = country.name;
+    }
+    if (nameEl) {
+        nameEl.textContent = country.name;
+    }
+
+    // Mostrar u ocultar secciones de comunicación / clases en vivo
+    document.querySelectorAll('.hispanic-only').forEach(el => {
+        el.classList.toggle('hidden', !country.hispanic);
+    });
+    document.querySelectorAll('.intl-only').forEach(el => {
+        el.classList.toggle('hidden', country.hispanic);
+    });
+
+    const buyPhone = document.getElementById('buy-phone');
+    if (buyPhone) {
+        buyPhone.required = country.hispanic;
+    }
+
+    // Traducir textos y placeholders
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+            el.textContent = dict[key];
+        }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) {
+            el.setAttribute('placeholder', dict[key]);
+        }
+    });
+}
 
 /* --------------------------------------------------------------------------
    1. MENÚ MÓVIL
@@ -414,6 +542,12 @@ function escapeHtml(str) {
 /* --------------------------------------------------------------------------
    8. MODALES (YOUTUBE, CURSOS Y EVENTOS)
    -------------------------------------------------------------------------- */
+window.openVideoByKey = function(videoId, titleKey) {
+    const dict = getDict(currentCountry.lang);
+    const title = dict[titleKey] || titleKey;
+    openVideoModal(videoId, title);
+};
+
 window.openVideoModal = function(videoId, title) {
     const modal = document.getElementById('video-modal');
     const iframe = document.getElementById('video-iframe');
@@ -429,6 +563,23 @@ window.closeVideoModal = function() {
     const iframe = document.getElementById('video-iframe');
     iframe.src = '';
     modal.classList.add('hidden');
+};
+
+window.openCourseByKey = function(courseKey, price) {
+    const dict = getDict(currentCountry.lang);
+    const title = dict[`${courseKey}_title`] || courseKey;
+    const baseModules = dict[`${courseKey}_modules`] || [];
+    const modules = [...baseModules];
+    if (currentCountry.hispanic && modules.length > 0) {
+        modules[modules.length - 1] = `${modules[modules.length - 1]} + 1 Sesión 1 a 1 GRATIS`;
+    }
+    openCourseModal(title, modules, price);
+};
+
+window.openBuyCourseByKey = function(courseKey, price) {
+    const dict = getDict(currentCountry.lang);
+    const title = dict[`${courseKey}_title`] || courseKey;
+    openBuyCourseModal(title, price);
 };
 
 window.openCourseModal = function(title, modules, price) {
@@ -471,12 +622,16 @@ window.openBuyCourseModal = function(title, price) {
         const email = document.getElementById('buy-email').value.trim();
         const phone = document.getElementById('buy-phone').value.trim();
 
-        document.getElementById('buy-course-summary').textContent = `${name}, pre-reservamos tu compra de "${title}" (${price}). Incluye Videos + PDF y 1 Sesión 1 a 1 GRATIS.`;
+        if (currentCountry.hispanic) {
+            document.getElementById('buy-course-summary').textContent = `${name}, pre-reservamos tu compra de "${title}" (${price}). Incluye Videos + PDF y 1 Sesión 1 a 1 GRATIS.`;
 
-        const waText = encodeURIComponent(
-            `Hola Oscar, pre-reservé la compra de un curso online:\n• Curso: ${title} (${price})\n• Incluye: Videos + PDF + 1 Sesión 1 a 1 GRATIS\n• Nombre: ${name}\n• Email para recibir acceso: ${email}\n• WhatsApp: ${phone}`
-        );
-        document.getElementById('buy-course-wa-link').href = `https://wa.me/5493624237272?text=${waText}`;
+            const waText = encodeURIComponent(
+                `Hola Oscar, pre-reservé la compra de un curso online:\n• Curso: ${title} (${price})\n• Incluye: Videos + PDF + 1 Sesión 1 a 1 GRATIS\n• Nombre: ${name}\n• Email para recibir acceso: ${email}\n• WhatsApp: ${phone}`
+            );
+            document.getElementById('buy-course-wa-link').href = `https://wa.me/5493624237272?text=${waText}`;
+        } else {
+            document.getElementById('buy-course-summary').textContent = `${name} (${email}) — "${title}" (${price}).`;
+        }
 
         wrapper.classList.add('hidden');
         success.classList.remove('hidden');
