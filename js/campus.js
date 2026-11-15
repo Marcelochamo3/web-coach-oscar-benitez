@@ -24,6 +24,17 @@ const CAMPUS_COURSES = [
                 videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 pdfTitle: 'Guía PDF: Mapa de Conversaciones Pendientes',
                 pdfSummary: 'Herramienta práctica para identificar juicios, hechos y pedidos antes de iniciar una charla clave.',
+                exercise: {
+                    title: 'Ejercicio de Vocalización y Modulación Consciente',
+                    intro: 'Antes de una conversación difícil, la tensión cierra la garganta y acelera el ritmo. Realiza esta práctica de 3 minutos para hablar con calma y firmeza:',
+                    steps: [
+                        'Inhala profundo por la nariz en 4 segundos llevando el aire al abdomen (respiración diafragmática).',
+                        'Suelta el aire pronunciando una "S" continua y pareja durante 10 segundos para relajar la laringe.',
+                        'Lee en voz alta la frase clave de tu conversación exagerando la articulación de las consonantes (ej. con un lápiz suave entre los dientes por 30 segundos y luego sin él).',
+                        'Repite el pedido final con tono grave, pausado y sin apurar el cierre.'
+                    ],
+                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                },
                 quiz: [
                     {
                         q: '¿Qué es lo primero que debemos distinguir antes de tener una conversación difícil?',
@@ -52,6 +63,16 @@ const CAMPUS_COURSES = [
                 videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 pdfTitle: 'Workbook PDF: Frases de Apertura Generativa',
                 pdfSummary: 'Ejercicios de reformulación para sostener límites sanos cuidando el vínculo.',
+                exercise: {
+                    title: 'Ejercicio de Pausas y Ritmo Vocal al Decir "NO"',
+                    intro: 'Decir no sin culpa requiere coherencia entre lo que dices y cómo suena tu voz. Practica frente al espejo:',
+                    steps: [
+                        'Apoya ambos pies firmes en el suelo y relaja los hombros hacia atrás.',
+                        'Pronuncia la frase: "Agradezco la propuesta, pero en este momento no puedo asumir ese compromiso", haciendo una pausa de 2 segundos antes y después.',
+                        'Mantén el contacto visual y evita subir el tono al final (que no suene a pregunta o disculpa).'
+                    ],
+                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                },
                 quiz: [
                     {
                         q: '¿Cuál es el objetivo principal de la escucha activa en una diferencia?',
@@ -89,6 +110,15 @@ const CAMPUS_COURSES = [
                 videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 pdfTitle: 'Guía PDF: Los 3 Pilares de la Confianza',
                 pdfSummary: 'Sinceridad, competencia y responsabilidad aplicados a la gestión diaria de equipos.',
+                exercise: {
+                    title: 'Ejercicio de Proyección Vocal para Líderes',
+                    intro: 'Un líder inspira seguridad cuando su voz proyecta claridad sin gritar. Practica este ejercicio antes de tu próxima reunión:',
+                    steps: [
+                        'Realiza 5 vibraciones labiales suaves ("brrr") subiendo y bajando de tono para activar los resonadores faciales.',
+                        'Presenta el objetivo de tu equipo en 30 segundos mirando a un punto fijo, marcando las palabras clave con intención.'
+                    ],
+                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                },
                 quiz: [
                     {
                         q: '¿Qué diferencia a un líder coach de un jefe operativo tradicional?',
@@ -117,6 +147,15 @@ const CAMPUS_COURSES = [
                 videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 pdfTitle: 'Manual PDF: Protocolo de Feedback 1 a 1',
                 pdfSummary: 'Guía paso a paso para dar devoluciones basadas en hechos y enfocadas en el futuro.',
+                exercise: {
+                    title: 'Ejercicio de Tono Empático en Feedback',
+                    intro: 'Entrena la calidez y la claridad al dar una devolución constructiva:',
+                    steps: [
+                        'Grábate con el celular diciendo un feedback de 20 segundos basado en un hecho concreto.',
+                        'Escúchate y verifica si tu tono suena sereno, respetuoso y enfocado en la mejora futura.'
+                    ],
+                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                },
                 quiz: [
                     {
                         q: 'Un feedback generativo se enfoca en:',
@@ -145,6 +184,16 @@ const CAMPUS_COURSES = [
                 videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 pdfTitle: 'Workbook PDF: Bitácora Emocional Semanal',
                 pdfSummary: 'Registro práctico para detectar disparadores de ansiedad y diseñar respuestas conscientes.',
+                exercise: {
+                    title: 'Ejercicio de Respiración, Anclaje y Voz Serena',
+                    intro: 'Cuando aparece la ansiedad, la respiración se vuelve corta y alta. Reentrena tu corporalidad en 2 minutos:',
+                    steps: [
+                        'Inhala en 4 tiempos, sostén 4 tiempos y exhala lento en 6 tiempos (3 repeticiones).',
+                        'Vocaliza una "M" suave prolongada sintiendo la vibración en el pecho para bajar la activación del sistema nervioso.',
+                        'Nombra en voz alta la emoción que estás sintiendo sin juzgarla.'
+                    ],
+                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                },
                 quiz: [
                     {
                         q: '¿Cuál es la diferencia clave entre emoción y estado de ánimo?',
@@ -283,10 +332,11 @@ function getCourseProgressPercent(course) {
     let doneSteps = 0;
 
     course.modules.forEach(m => {
-        totalSteps += 3; // video + pdf + quiz
+        totalSteps += 4; // video + pdf + exercise + quiz
         const mp = cProg[m.id] || {};
         if (mp.video) doneSteps++;
         if (mp.pdf) doneSteps++;
+        if (mp.exercise) doneSteps++;
         if (mp.quizPassed) doneSteps++;
     });
 
@@ -393,7 +443,7 @@ function renderCourseSidebar() {
 
     list.innerHTML = course.modules.map(mod => {
         const mp = prog[mod.id] || {};
-        const done = mp.video && mp.pdf && mp.quizPassed;
+        const done = mp.video && mp.pdf && mp.exercise && mp.quizPassed;
         const isActive = mod.id === activeModuleId;
         return `
             <button type="button" onclick="selectModule('${mod.id}')" class="w-full text-left px-3.5 py-3 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-between gap-2 transition-colors ${isActive ? 'bg-forest-800 text-white' : 'text-forest-900 hover:bg-forest-50'}">
@@ -418,6 +468,13 @@ function renderActiveModule() {
 
     const prog = getUserProgress();
     const mp = (prog[course.id] && prog[course.id][mod.id]) || {};
+    const quizUnlocked = Boolean(mp.video && mp.pdf && mp.exercise);
+    const ex = mod.exercise || {
+        title: 'Ejercicio Práctico de Vocalización y Presencia',
+        intro: 'Realiza esta práctica guiada antes de pasar a la evaluación.',
+        steps: ['Respira profundo y practica en voz alta los conceptos del módulo.'],
+        videoUrl: mod.videoUrl
+    };
 
     area.innerHTML = `
         <div class="border-b border-forest-100 pb-4">
@@ -457,66 +514,123 @@ function renderActiveModule() {
             </div>
         </div>
 
-        <!-- 3. CUESTIONARIO / EXAMEN DEL MÓDULO -->
-        <div class="border border-forest-200 rounded-2xl p-5 sm:p-6 space-y-5">
-            <div class="flex items-center justify-between gap-2">
+        <!-- 3. EJERCICIOS PRÁCTICOS (TEXTO + VIDEO FORMATO VERTICAL 9:16) -->
+        <div class="bg-cream border border-forest-200 rounded-2xl p-5 sm:p-6 space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-forest-100 pb-4">
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-forest-600">Evaluación del Módulo</span>
-                    <h3 class="text-lg font-bold text-forest-900">Cuestionario de Aprobación (Mínimo 70%)</h3>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-forest-600">
+                        <i data-lucide="mic" class="w-4 h-4"></i> Práctica Guiada
+                    </span>
+                    <h3 class="text-lg font-bold text-forest-900 mt-0.5">${ex.title}</h3>
                 </div>
-                ${mp.quizPassed ? '<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">Aprobado ✓</span>' : ''}
+                <button type="button" onclick="toggleStep('${mod.id}', 'exercise')" class="self-start sm:self-auto text-xs font-semibold px-3.5 py-2 rounded-xl border transition-colors ${mp.exercise ? 'bg-forest-700 border-forest-700 text-white' : 'bg-white border-forest-200 text-forest-800 hover:bg-forest-50'}">
+                    ${mp.exercise ? '✓ Ejercicio realizado' : 'Marcar ejercicio realizado'}
+                </button>
             </div>
 
-            <form id="module-quiz-form" class="space-y-5">
-                ${mod.quiz.map((qItem, qIdx) => `
-                    <div class="space-y-2.5">
-                        <p class="text-sm font-semibold text-forest-900">${qIdx + 1}. ${qItem.q}</p>
-                        <div class="space-y-2">
-                            ${qItem.options.map((opt, oIdx) => `
-                                <label class="flex items-center gap-3 p-3 rounded-xl border border-forest-100 hover:bg-forest-50 cursor-pointer text-sm">
-                                    <input type="radio" name="q_${qIdx}" value="${oIdx}" required class="text-forest-700 focus:ring-forest-500">
-                                    <span>${opt}</span>
-                                </label>
-                            `).join('')}
-                        </div>
-                    </div>
-                `).join('')}
+            <div class="grid md:grid-cols-12 gap-6 items-center">
+                <!-- Texto del ejercicio en la página web -->
+                <div class="md:col-span-7 space-y-3">
+                    <p class="text-sm text-forest-900/80 leading-relaxed">${ex.intro}</p>
+                    <ol class="space-y-2.5 text-sm text-forest-900/85">
+                        ${ex.steps.map((stepText, idx) => `
+                            <li class="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-forest-100">
+                                <span class="w-6 h-6 rounded-full bg-forest-100 text-forest-800 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">${idx + 1}</span>
+                                <span class="leading-relaxed">${stepText}</span>
+                            </li>
+                        `).join('')}
+                    </ol>
+                </div>
 
-                <button type="submit" class="bg-forest-700 hover:bg-forest-800 text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors">
-                    Enviar Respuestas y Corregir
-                </button>
-                <div id="quiz-feedback" class="hidden text-sm font-medium p-3.5 rounded-xl"></div>
-            </form>
+                <!-- Video demostración en formato vertical (9:16) -->
+                <div class="md:col-span-5 flex flex-col items-center">
+                    <div class="w-full max-w-[240px] aspect-[9/16] rounded-2xl overflow-hidden bg-forest-950 border-2 border-forest-200 shadow-md relative">
+                        <iframe src="${ex.videoUrl}" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <span class="text-[11px] font-medium text-forest-700 mt-2">Video guía en formato vertical (9:16)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. CUESTIONARIO / EXAMEN DEL MÓDULO (BLOQUEADO HASTA COMPLETAR TODO) -->
+        <div class="border border-forest-200 rounded-2xl p-5 sm:p-6 space-y-5 ${quizUnlocked ? 'bg-white' : 'bg-forest-50/50'}">
+            <div class="flex items-center justify-between gap-2">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-forest-600">Evaluación Final del Módulo</span>
+                    <h3 class="text-lg font-bold text-forest-900">Cuestionario de Aprobación (Mínimo 70%)</h3>
+                </div>
+                ${mp.quizPassed ? '<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">Aprobado ✓</span>' : (!quizUnlocked ? '<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Bloqueado</span>' : '')}
+            </div>
+
+            ${!quizUnlocked ? `
+                <div class="bg-white border border-forest-200 rounded-xl p-4 space-y-3">
+                    <p class="text-sm font-semibold text-forest-900">Para habilitar el cuestionario final debes completar los 3 pasos previos:</p>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li class="flex items-center gap-2 ${mp.video ? 'text-emerald-700 font-semibold' : 'text-forest-900/70'}">
+                            <span>${mp.video ? '✓' : '○'}</span> Ver el video completo de la clase
+                        </li>
+                        <li class="flex items-center gap-2 ${mp.pdf ? 'text-emerald-700 font-semibold' : 'text-forest-900/70'}">
+                            <span>${mp.pdf ? '✓' : '○'}</span> Leer el material en PDF
+                        </li>
+                        <li class="flex items-center gap-2 ${mp.exercise ? 'text-emerald-700 font-semibold' : 'text-forest-900/70'}">
+                            <span>${mp.exercise ? '✓' : '○'}</span> Realizar los ejercicios de vocalización / práctica
+                        </li>
+                    </ul>
+                </div>
+            ` : `
+                <form id="module-quiz-form" class="space-y-5">
+                    ${mod.quiz.map((qItem, qIdx) => `
+                        <div class="space-y-2.5">
+                            <p class="text-sm font-semibold text-forest-900">${qIdx + 1}. ${qItem.q}</p>
+                            <div class="space-y-2">
+                                ${qItem.options.map((opt, oIdx) => `
+                                    <label class="flex items-center gap-3 p-3 rounded-xl border border-forest-100 hover:bg-forest-50 cursor-pointer text-sm">
+                                        <input type="radio" name="q_${qIdx}" value="${oIdx}" required class="text-forest-700 focus:ring-forest-500">
+                                        <span>${opt}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+
+                    <button type="submit" class="bg-forest-700 hover:bg-forest-800 text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors">
+                        Enviar Respuestas y Corregir
+                    </button>
+                    <div id="quiz-feedback" class="hidden text-sm font-medium p-3.5 rounded-xl"></div>
+                </form>
+            `}
         </div>
     `;
 
     if (window.lucide) lucide.createIcons();
 
     const quizForm = document.getElementById('module-quiz-form');
-    quizForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let correct = 0;
-        mod.quiz.forEach((qItem, idx) => {
-            const selected = quizForm.querySelector(`input[name="q_${idx}"]:checked`);
-            if (selected && parseInt(selected.value, 10) === qItem.answer) {
-                correct++;
+    if (quizForm) {
+        quizForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let correct = 0;
+            mod.quiz.forEach((qItem, idx) => {
+                const selected = quizForm.querySelector(`input[name="q_${idx}"]:checked`);
+                if (selected && parseInt(selected.value, 10) === qItem.answer) {
+                    correct++;
+                }
+            });
+
+            const score = Math.round((correct / mod.quiz.length) * 100);
+            const passed = score >= 70;
+            const fb = document.getElementById('quiz-feedback');
+            fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-amber-50', 'text-amber-900');
+
+            if (passed) {
+                fb.classList.add('bg-emerald-50', 'text-emerald-800');
+                fb.textContent = `¡Excelente! Aprobaste con ${score}% (${correct}/${mod.quiz.length} respuestas correctas).`;
+                markQuizPassed(mod.id);
+            } else {
+                fb.classList.add('bg-amber-50', 'text-amber-900');
+                fb.textContent = `Obtuviste ${score}% (${correct}/${mod.quiz.length}). Necesitas al menos 70% para aprobar. ¡Inténtalo de nuevo!`;
             }
         });
-
-        const score = Math.round((correct / mod.quiz.length) * 100);
-        const passed = score >= 70;
-        const fb = document.getElementById('quiz-feedback');
-        fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-amber-50', 'text-amber-900');
-
-        if (passed) {
-            fb.classList.add('bg-emerald-50', 'text-emerald-800');
-            fb.textContent = `¡Excelente! Aprobaste con ${score}% (${correct}/${mod.quiz.length} respuestas correctas).`;
-            markQuizPassed(mod.id);
-        } else {
-            fb.classList.add('bg-amber-50', 'text-amber-900');
-            fb.textContent = `Obtuviste ${score}% (${correct}/${mod.quiz.length}). Necesitas al menos 70% para aprobar. ¡Inténtalo de nuevo!`;
-        }
-    });
+    }
 }
 
 window.toggleStep = function(modId, key, forceTrue = false) {

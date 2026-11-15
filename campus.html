@@ -200,9 +200,9 @@
         </div>
 
         <div class="max-w-7xl w-full mx-auto flex-1 grid lg:grid-cols-12 gap-6 px-4 sm:px-6 lg:px-8 py-6">
-            <!-- Sidebar de Módulos -->
-            <aside class="lg:col-span-4 xl:col-span-3 space-y-2">
-                <div class="bg-white rounded-2xl border border-forest-100 p-4 shadow-sm">
+            <!-- Sidebar de Módulos (fija al hacer scroll en escritorio) -->
+            <aside class="lg:col-span-4 xl:col-span-3 lg:sticky lg:top-24 lg:self-start space-y-2">
+                <div class="bg-white rounded-2xl border border-forest-100 p-4 shadow-sm lg:max-h-[calc(100vh-7.5rem)] lg:overflow-y-auto">
                     <p class="text-xs font-bold uppercase tracking-wider text-forest-600 mb-3">Contenido del Curso</p>
                     <div id="course-sidebar-list" class="space-y-1.5">
                         <!-- Generado dinámicamente -->
@@ -283,6 +283,6 @@
         </div>
     </div>
 
-    <script src="js/campus.js?v=1.1"></script>
+    <script src="js/campus.js?v=1.2"></script>
 </body>
 </html>
