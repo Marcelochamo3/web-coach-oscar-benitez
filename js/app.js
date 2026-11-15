@@ -578,6 +578,20 @@ window.openBuyCourseByKey = function(courseKey, price) {
     openBuyCourseModal(title, price);
 };
 
+let courseTimerInterval = null;
+
+function updateCourseTimer() {
+    const timerEl = document.getElementById('course-modal-timer');
+    if (!timerEl) return;
+    const now = new Date();
+    const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+    const diff = Math.max(0, Math.floor((endOfDay - now) / 1000));
+    const hrs = String(Math.floor(diff / 3600)).padStart(2, '0');
+    const mins = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+    const secs = String(diff % 60).padStart(2, '0');
+    timerEl.textContent = `${hrs}:${mins}:${secs}`;
+}
+
 window.openCourseModal = function(title, modules, price) {
     const modal = document.getElementById('course-modal');
     document.getElementById('course-modal-title').textContent = title;
@@ -591,10 +605,19 @@ window.openCourseModal = function(title, modules, price) {
         openBuyCourseModal(title, price);
     };
 
+    updateCourseTimer();
+    if (courseTimerInterval) clearInterval(courseTimerInterval);
+    courseTimerInterval = setInterval(updateCourseTimer, 1000);
+
     modal.classList.remove('hidden');
+    if (window.lucide) lucide.createIcons();
 };
 
 window.closeCourseModal = function() {
+    if (courseTimerInterval) {
+        clearInterval(courseTimerInterval);
+        courseTimerInterval = null;
+    }
     document.getElementById('course-modal').classList.add('hidden');
 };
 
